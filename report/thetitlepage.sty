@@ -1,0 +1,108 @@
+\RequirePackage{xifthen}
+
+\newcommand{\thetitle}{Themenwortlaut}
+
+\newcommand{\thesubtitle}{none}
+
+\newcommand{\artderarbeit}{Masterarbeit}
+
+%\newcommand{\artderarbeitzusatz}{none}
+
+\newcommand{\thetitlehead}{}
+
+\newcommand{\theauthor}{}
+
+\newcommand{\thedate}{}
+
+\newcommand{\betreuer}{}
+
+\newcommand{\thededication}{}
+
+\newcommand{\theabstractfirst}{}
+
+\newcommand{\theabstractsec}{}
+
+\newcommand{\thestatement}{}
+
+% generates a title page
+\newcommand{\printthetitlepage}{
+\begin{titlepage}
+\thetitlehead
+
+\begin{center}  
+
+\noindent
+\begin{center}
+\rule{\textwidth}{2pt}
+\end{center}%\\[1.0cm]
+\vspace{0.5cm}
+	\artderarbeit\\[1cm]
+      	\usekomafont{title}\LARGE{\thetitle}
+     	\ifthenelse{\equal{\thesubtitle}{none}}{}{{\\\usekomafont{title}\large\thesubtitle}}\\[0.5cm]
+
+\noindent
+\begin{center}
+\rule{\textwidth}{2pt}
+\end{center}%\
+\vspace{1cm}
+
+\usekomafont{subject}\theauthor\\[1cm]
+
+\usekomafont{subject}\thedate\\[1cm]
+
+\usekomafont{subject}\betreuer\\[1cm]
+\end{center}
+
+\end{titlepage}
+}
+
+% generates a dedication page
+\newcommand{\printthededication}{
+\begin{titlepage}
+
+\null\vfil
+\begin{center}
+\large\thededication
+\end{center}
+\par\vfil\null
+
+\end{titlepage}
+}
+
+
+% generates a abstract page
+\newcommand{\printtheabstract}[2][]{
+\begin{titlepage}
+
+\null\vfil
+\begin{center}
+\sffamily\bfseries {#2}
+\end{center}
+\theabstractfirst
+
+\ifthenelse{\isempty{#1}}%
+{}% #1 is empty
+{\vspace{0.5cm}\begin{center}
+\sffamily\bfseries {#1}
+\end{center}
+\theabstractsec}
+\par\vfil\null
+
+\end{titlepage}
+}
+
+% generates a statement page
+\newcommand{\printthestatement}[1]{
+\begin{titlepage}
+
+\null\vfil
+
+\begin{center}
+\sffamily\bfseries {#1}
+\end{center}
+\thestatement
+
+\par\vfil\null
+
+\end{titlepage}
+}

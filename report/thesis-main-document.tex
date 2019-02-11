@@ -1,0 +1,360 @@
+%EINSTELLUNGEN
+%Dokumenttyp und -format
+%see KOMA-script manual <http://www.komascript.de>
+\documentclass[	12pt, 
+				a4paper, 
+				BCOR=10mm, % Heftrandkorrektur
+				DIV=12, 
+				parskip=half, % Absatz mit halber Zeile Abstand, ansonsten nur eingerückt
+				headings=small, % kleine Überschriften
+				twoside, %oneside, %- je nach Umfang
+				ngerman,
+				bibliography=totoc,index=totoc, listof=totoc,
+				numbers=noendperiod
+				%,draft=true
+				]{scrbook} %scrreprt bei kürzeren Arbeiten
+
+%%%% Laden von Paketen %%%%
+
+\usepackage{thetitlepage}
+
+% Zeilenabstand 1.5
+\usepackage{setspace}
+\onehalfspacing %\singlespacing %\doublespacing
+\KOMAoptions{DIV=last} %Seitenspiegel neu berechnen
+
+% Zeilenabstand in Listen kleiner
+\usepackage{enumitem}
+\setlist{parsep=0.5\parskip} 
+
+%automatische Silbentrennung
+\usepackage[ngerman]{babel}% Das Beispieldokument ist in Deutsch,
+% daher wird mit Hilfe des babel-Pakets
+                % über Option ngerman auf deutsche Begriffe
+                % und gleichzeitig Trennmuster nach den
+                % aktuellen Rechtschreiberegeln umgeschaltet.
+                % Alternativen und weitere Sprachen sind
+                % verfügbar (siehe <http://ctan.org/pkg/babel>).
+                
+
+
+%automatische Übersetzung
+\usepackage[ngerman]{translator}
+
+%Schriftsatz
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} %modernerer Schriftsatz
+\KOMAoptions{DIV=last}%Seitenspiegel neu berechnen
+
+%fuer deutsche Umlaute
+\usepackage[utf8]{inputenc}
+
+%deutsche Anfuehrungsstriche
+\usepackage[babel,german=quotes]{csquotes}
+
+% Literaturverwaltug
+%\usepackage[style=debug]{biblatex}
+\usepackage[
+style=apa, 	% Zitierstil
+isbn=false,	% ISBN nicht anzeigen, gleiches geht mit nahezu allen anderen Feldern
+doi=false,
+url=false, 
+pagetracker=true,        % ebd. bei wiederholten Angaben (false=ausgeschaltet, page=Seite, spread=Doppelseite, true=automatisch)
+%maxbibnames=50,       % maximale Namen, die im Literaturverzeichnis angezeigt werden (ich wollte alle)
+%maxcitenames=3,        % maximale Namen, die im Text angezeigt werden, ab 4 wird u.a. nach den ersten Autor angezeigt
+%autocite=inline,            % regelt Aussehen für \autocite (inline=\parancite)
+block=space,               % kleiner horizontaler Platz zwischen den Feldern
+backref=true,               % Seiten anzeigen, auf denen die Referenz vorkommt
+backrefstyle=three+,    % fasst Seiten zusammen, z.B. S. 2f, 6ff, 7-10
+%date=short,                  % Datumsformat
+backend=biber            %Backend of choice, if bibtex is another option, but apa & bibtex may clash
+]{biblatex}
+\DeclareLanguageMapping{ngerman}{ngerman-apa}
+
+ %Laden der Bibtex-Datei(en)
+\addbibresource{literature.bib}
+
+
+% Farbdefinitionen für Hyperref (s.u.) und Tabellen
+\usepackage[table, svgnames]{xcolor}
+
+%Url Anzeige
+% Einstellungen für die Hyperlinks, die im PDF geklickt werden können
+% Für den finalen Druck ist schwarzer Text besser, dann sollte die Option
+% "colorlinks" gelöscht werden. Also so:
+% \usepackage[unicode=true, breaklinks=true]{hyperref}
+\usepackage[unicode=true, breaklinks=true, colorlinks=true] {hyperref}
+\hypersetup{%
+	citecolor=RoyalBlue,
+	urlcolor=Crimson,
+	linkcolor=ForestGreen
+}
+%Graphiken
+\usepackage{graphicx}
+
+%Mathebib
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%Tabellen
+\usepackage{tabularx}
+%\usepackage{tabu}
+%\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{ctable} % needed for \cmidrule{}
+
+
+%Farbe
+\usepackage{color}
+
+%Theorems
+\usepackage{amsthm}
+
+%Abkürzungen, Definitionen
+% see http://en.wikibooks.org/wiki/LaTeX/Glossary
+\usepackage[nomain,acronym,toc, translate=true]{glossaries} % nomain, if you define glossaries in a file, and you use \include{INP-00-glossary}
+\makeglossaries
+\makeindex
+
+%%%% Einstellungen %%%%
+
+%Gleitumgebungsbeschriftungen
+%see KOMA-script manual
+\renewcommand*{\captionformat}{.\ }
+\renewcommand*{\tableformat}{\tablename~\thetable}
+\addtokomafont{caption}{}
+\setlength\abovecaptionskip{\lineskip}
+\setcapindent{0em}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+\KOMAoptions{
+captions=tableheading, 	%Tabellen als Überschrift
+captions=figuresignature,	%Abbildungen als Unterschrift
+captions=leftbeside,
+captions=nooneline
+}
+
+% Zuweisung von Schriften
+% see KOMA-script manual
+\setkomafont{subject}{\normalfont\large}
+
+% Format des Anhangs: Anhang A. name, Inhalte nicht im Inhaltsverzeichnis
+% see KOMA-script manual
+\newcommand*{\appendixmore}{% 
+\renewcommand*{\chapterformat}{%
+\appendixname~\thechapter.\enskip}% 
+\renewcommand*{\chaptermarkformat}{%
+\appendixname~\thechapter.\enskip}
+\renewcommand*{\othersectionlevelsformat}[3]{%
+##3.\enskip}%
+\renewcommand*{\sectionmarkformat}{%
+\thesection.\enskip}
+\addcontentsline{toc}{chapter}{\appendixname}% 
+\addtocontents{toc}{\protect\value{tocdepth}=-1}% 
+}
+
+\theoremstyle{plain}% default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{KL}{Klein’s Lemma}
+\theoremstyle{definition}
+\newtheorem{alg}[thm]{Algorithmus}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
+
+%%%% Eigene Definitionen %%%%
+
+\makeatletter
+%environmentdefinitionen hierhinein
+\makeatother
+
+%eigene Definitionen
+%\newcommand{vec}[1]{\ensuremath\textbf{#1}}   
+\newcommand{\vc}[1]{\ensuremath\textbf{#1}} 
+\newcommand{\qt}[1]{\ensuremath{\dot{#1}}} 
+\newcommand{\mt}[1]{\ensuremath\textbf{\uppercase{#1}}} 
+\newcommand{\pt}[1]{\ensuremath{\textbf{\textit{\uppercase{#1}}}}} 
+\newcommand{\kor}[1]{\textcolor{red}{#1}}
+
+\newcommand{\abbpos}{50pt}
+
+%Abkürzungen
+% see http://en.wikibooks.org/wiki/LaTeX/Glossary
+%new glossary term
+\newglossaryentry{sample}{name={sample}, description={a sample entry}}
+
+%new acronym
+\newacronym[\glsshortpluralkey=cas,\glslongpluralkey=contrived acronyms]{aca}{aca}{a contrived acronym}%
+\newacronym{abk}{Abk.}{Abkürzung}%
+\newacronym{http}{HTTP}{hypertext transfer protokol}
+
+
+% DOKUMENT ANFANG
+\begin{document}
+
+%%%% Titelseite Definitionen %%%%
+
+%Header PsyErg
+%\def\tabularxcolumn#1{m{#1}}
+% \renewcommand{\thetitlehead}{
+%\begin{tabularx}{\textwidth}{l X m{6.5cm}}
+%\raisebox{-.5\height}{
+%\includegraphics[height=1.8cm]{figures/unilogo4cohne.jpg}
+%} & &\small{Philosophische Fakultät II\newline
+%Institut für Mensch-Computer-Medien\newline{Psychologische Ergonomie}}\\   
+%\end{tabularx} }
+
+%Header HCI
+\def\tabularxcolumn#1{m{#1}}
+ \renewcommand{\thetitlehead}{
+\begin{tabularx}{\textwidth}{l X m{6.745cm} r}
+\raisebox{-.5\height}{
+\includegraphics[height=1.8cm]{figures/unilogo4cohne.jpg}
+} & &\small{Fakultät für Mathematik und Informatik\newline
+Institut für Informatik\newline{Mensch-Computer Interaktion}}&
+\raisebox{-.5\height}{
+\includegraphics[height=1.8cm]{figures/hci-logo-red.pdf}
+}\\ \end{tabularx} }
+
+
+%Art der Arbeit (Seminararbeit/Hausarbeit zum Seminar "Seminarname" "Semester", Bachelorarbeit,...)
+\renewcommand{\artderarbeit}{ \usekomafont{subject}\textbf{Bachelorarbeit}  \vspace{0.5cm} \\ \normalfont zur Erlangung des Grades\\ Bachelor of Science (B. Sc.) \\ im Studiengang Mensch-Computer-Systeme\\ an der Universität Würzburg}
+
+%Titel der Arbeit
+\renewcommand{\thetitle}{Titel titel titel titel titel titel titel titel titel titel titel titel titel}
+
+% ggf. Untertitel der Arbeit
+%\renewcommand{\thesubtitle}{ Untertitel}
+
+%Autor(en)
+\renewcommand{\theauthor}{vorgelegt von\\ Vorname Nachname \\ Matrikelnummer:  10101010}
+
+%Datum (Bei Thesis Abgabedatum)
+\renewcommand{\thedate}{am \today}
+
+%Betreuer/ Kursleiter
+\renewcommand{\betreuer}{Betreuer/Prüfer:\\ Prof. Marc Erich Latoschik, Informatik IX, Universität Würzburg}
+
+%ggf. Widmung/ Danksagung
+\renewcommand{\thededication}{<Widmung>\\ddd \\ddd}
+
+
+%%%% Zusammenfassung %%%%
+
+% obligatorisch bei Abschlussarbeiten
+\renewcommand{\theabstractfirst}{deutsche Zusammenfassung - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet}
+
+\renewcommand{\theabstractsec}{englisch abstract- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. .   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,}
+
+%%%% Erklärung %%%%
+
+% obligatorisch bei Abschlussarbeiten
+\renewcommand{\thestatement}{Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe.
+
+Alle Stellen, die wörtlich oder sinngemäß aus veröffentlichten oder nicht veröffentlichten Schriften entnommen wurden, sind als solche kenntlich gemacht.
+
+Die Arbeit hat in gleicher oder ähnlicher Form noch keiner anderen Prüfungsbehörde vorgelegen.\\[1cm]
+
+Würzburg, \today\\[1cm]
+
+Vorname Nachname
+}
+
+%%%% Titelei %%%%
+
+\frontmatter%bei scrreprt auskommentieren
+\begin{spacing}{1}
+
+% Titelseite
+\printthetitlepage
+
+% Widmung (optional)		
+\printthededication	
+\end{spacing}
+
+% Zusammenfassung (obligatorisch bei Abschlussarbeiten)
+\printtheabstract[Abstract]{Zusammenfassung} 	%\printtheabstract{titlefirst} nur \abstractfirst mit Titel 'fitlefirst'
+
+\printthestatement{Ehrenwörtliche Erklärung}    		% Erklärung (bei Abschlussarbeiten obligatorisch)
+
+
+\begin{spacing}{1}
+
+% Inhaltsverzeichnis
+\tableofcontents 	
+
+% Abbildungsverzeichnis  (optional)
+\listoffigures 		
+
+% Tabellenverzeichnis (optional)
+\listoftables		
+
+% Abkürzungsverzeichnis
+% You have to run:
+% makeindex -s "$bfname".ist -t "$bfname".alg -o "$bfname".acr "$bfname".acn
+% makeindex -s "$bfname".ist -t "$bfname".glg -o "$bfname".gls "$bfname".glo
+\printglossary[type=\acronymtype] 
+
+\end{spacing}
+
+%%%% Inhalte %%%%
+
+\mainmatter %bei scrreprt auskommentieren
+
+\chapter{Gliederung}
+Allgemeine Informationen zu Struktur und Layout finden sich im Anhang~\ref{app:anleitung} ab Seite~\pageref{app:anleitung}.
+
+% Minimale Gliederung und Text:
+\section{Einleitung}
+\label{sec:einleitung}
+
+
+Dieser Abschnitt enthält die Aufgabenstellung und die Motivation. Er kann auch
+wenige wichtige Grundlagen und Vorarbeiten nennen. Diese werden aber im nächsten Abschnitt in Breite ausgearbeitet. Gibt es wenige zu nennende Arbeiten, so kann dies gemeinsam in einem Abschnitt abgehandelt werden.sss Hallosmddd dsdjksdj k emdekwdn nd dmdlkdpwekdlj 
+
+\section{Stand der Forschung}
+\label{sec:forschungsstand}
+Welche Arbeiten sind als Ideengeber oder Grundlagen für das Thema der vorliegenden Ausarbeitung zu nennen? Wie ist es mit den Arbeiten von \textcite{fischbach:2012a}? Diese stellen ja bereits eine Idee vor? Sind die Arbeiten von \textcite{fischbach:2012a} hier wichtig? Kein Stand der Forschung ohne wissenschaftliche Referenzen. Wir halten den APA (American Psychology Association) Style für angeraten. Der Style ist äußerst umfangreich, s. \url{http://www.apastyle.org}. Insgesamt wird ja viel zu diesem Thema publiziert \parencite{wiebusch:2012a}. Andere Quellen sind grundlegender Natur \parencites{latoschik:2012a,latoschik:2011,fischbach:2011,Rehfeld:2010,wiebusch:2010,latoschik:2010}. Die Zitierstile sind sehr unterschiedlich, eine Unterstützung per Programm ist sinnvoll. Biblatex zusammen mit APA ist eine gute Kombination. 
+
+\section{Konzept}
+\label{sec:konzept}
+\section{Implementierung}
+\label{sec:implementierung}
+\section{Evaluationsmethode}
+\label{sec:evaluationsmethode}
+\section{Durchführung}
+\label{sec:durchfuehrung}
+\section{Ergebnis}
+\label{sec:ergebnis}
+\section{Diskussion}
+\label{sec:diskussion}
+Hierher gehört eine Diskussion des Erreichten, ein Fazit und ggf. ein Ausblick auf weitere Dinge, die getan
+werden könnten.
+
+%%%% Anhänge %%%%
+
+\newpage
+ \printbibliography	% Literaturvezeichnis (obligatorisch)
+%\printbibheading
+%\printbibliography[nottype=online,heading=subbibliography,
+%                   title={Printed Sources}]
+%\printbibliography[type=online,heading=subbibliography,
+ %                  title={Online Sources}]
+
+\appendix 				% Anhang (optional) Überschriften beginnen mit Anhang ...
+
+\include{chapters/anleitung}
+
+
+\end{document}
+% DOKUMENT ENDEU
