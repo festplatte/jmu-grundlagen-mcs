@@ -1,0 +1,43 @@
+version: "3"
+services:
+  ## ------------------------------------------------------
+  ## MONGODB
+
+  mongodb:
+    container_name: alternate-mongodb
+    image: mongo:4.1
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: administrator
+      MONGO_INITDB_ROOT_PASSWORD: administrator
+    volumes:
+      - ./.data/mongodb:/data/db
+    ports:
+      - "27017:27017"
+
+  ## ------------------------------------------------------
+  ## BACKEND
+
+  backend:
+    tty: true
+    restart: always
+    container_name: alternate-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3010:3000"
+
+  # ------------------------------------------------------
+  # WEBAPP
+  webapp:
+    depends_on:
+      - backend
+    tty: true
+    restart: always
+    container_name: alternate-webapp
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
