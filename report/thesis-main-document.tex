@@ -224,25 +224,22 @@ Institut für Informatik\newline{Mensch-Computer Interaktion}}&
 
 
 %Art der Arbeit (Seminararbeit/Hausarbeit zum Seminar "Seminarname" "Semester", Bachelorarbeit,...)
-\renewcommand{\artderarbeit}{ \usekomafont{subject}\textbf{Bachelorarbeit}  \vspace{0.5cm} \\ \normalfont zur Erlangung des Grades\\ Bachelor of Science (B. Sc.) \\ im Studiengang Mensch-Computer-Systeme\\ an der Universität Würzburg}
+\renewcommand{\artderarbeit}{ \usekomafont{subject}\textbf{Projektarbeit}  \vspace{0.5cm} \\ \normalfont zum Kurs\\ Grundlagen der Mensch-Computer-Systeme \\ im Studiengang Master Informatik\\ an der Universität Würzburg}
 
 %Titel der Arbeit
-\renewcommand{\thetitle}{Titel titel titel titel titel titel titel titel titel titel titel titel titel}
+\renewcommand{\thetitle}{Cognitive Walkthrough zum Bestellprozess des Onlineshops www.alternate.de}
 
 % ggf. Untertitel der Arbeit
 %\renewcommand{\thesubtitle}{ Untertitel}
 
 %Autor(en)
-\renewcommand{\theauthor}{vorgelegt von\\ Vorname Nachname \\ Matrikelnummer:  10101010}
+\renewcommand{\theauthor}{vorgelegt von\\ Bastian Hedenkamp - Matrikelnummer: 10101010\\ Michael Gabler - Matrikelnummer: 10101010}
 
 %Datum (Bei Thesis Abgabedatum)
 \renewcommand{\thedate}{am \today}
 
 %Betreuer/ Kursleiter
 \renewcommand{\betreuer}{Betreuer/Prüfer:\\ Prof. Marc Erich Latoschik, Informatik IX, Universität Würzburg}
-
-%ggf. Widmung/ Danksagung
-\renewcommand{\thededication}{<Widmung>\\ddd \\ddd}
 
 
 %%%% Zusammenfassung %%%%
@@ -252,24 +249,6 @@ Institut für Informatik\newline{Mensch-Computer Interaktion}}&
 
 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet}
 
-\renewcommand{\theabstractsec}{englisch abstract- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. .   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,}
-
-%%%% Erklärung %%%%
-
-% obligatorisch bei Abschlussarbeiten
-\renewcommand{\thestatement}{Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe.
-
-Alle Stellen, die wörtlich oder sinngemäß aus veröffentlichten oder nicht veröffentlichten Schriften entnommen wurden, sind als solche kenntlich gemacht.
-
-Die Arbeit hat in gleicher oder ähnlicher Form noch keiner anderen Prüfungsbehörde vorgelegen.\\[1cm]
-
-Würzburg, \today\\[1cm]
-
-Vorname Nachname
-}
-
 %%%% Titelei %%%%
 
 \frontmatter%bei scrreprt auskommentieren
@@ -277,16 +256,10 @@ Vorname Nachname
 
 % Titelseite
 \printthetitlepage
-
-% Widmung (optional)		
-\printthededication	
 \end{spacing}
 
 % Zusammenfassung (obligatorisch bei Abschlussarbeiten)
-\printtheabstract[Abstract]{Zusammenfassung} 	%\printtheabstract{titlefirst} nur \abstractfirst mit Titel 'fitlefirst'
-
-\printthestatement{Ehrenwörtliche Erklärung}    		% Erklärung (bei Abschlussarbeiten obligatorisch)
-
+\printtheabstract{Zusammenfassung} 	%\printtheabstract{titlefirst} nur \abstractfirst mit Titel 'fitlefirst'
 
 \begin{spacing}{1}
 
@@ -352,8 +325,6 @@ werden könnten.
  %                  title={Online Sources}]
 
 \appendix 				% Anhang (optional) Überschriften beginnen mit Anhang ...
-
-\include{chapters/anleitung}
 
 
 \end{document}
