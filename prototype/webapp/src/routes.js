@@ -7,7 +7,7 @@ import Product from "./views/Product";
 export default (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route exact path="/search" component={Search} />
-    <Route exact path="/product" component={Product} />
+    <Route path="/search" component={Search} />
+    <Route path="/product" component={Product} />
   </Switch>
 );
