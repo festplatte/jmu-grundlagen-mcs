@@ -1,16 +1,32 @@
+const _ = require("lodash");
 const db = require("../db");
+const hash = require("../utils/hash");
 
 module.exports = function(req, res, next) {
   const user = req.body;
-
-  // TODO validate, hash password
+  user.password = hash(user.password);
 
   db(function(dbo, db) {
-    dbo.collection("users").insertOne(user, function(err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
-    });
+    dbo
+      .collection("users")
+      .findOne({ email: user.email }, function(err, result) {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          if (_.has(result, "email")) {
+            res.status(400).send("The email address is already registered.");
+            db.close();
+          } else {
+            dbo.collection("users").insertOne(user, function(err, result) {
+              if (err) {
+                res.status(500).send(err);
+              } else {
+                res.status(201).json(result);
+              }
+              db.close();
+            });
+          }
+        }
+      });
   });
-  res.status(201).json(user);
 };

@@ -1,10 +1,13 @@
+const _ = require("lodash");
+
+/**
+ * Validates if the obj contains every field listed in fields.
+ * @param {any} obj
+ * @param {Array} fields
+ */
 function validateObject(obj, fields) {
-  for (let i; i < fields.length; i++) {
-    if (
-      obj[fields[i]] === undefined ||
-      obj[fields[i]] === null ||
-      obj[fields[i]] === ""
-    ) {
+  for (let i = 0; i < fields.length; i++) {
+    if (!_.has(obj, fields[i])) {
       return false;
     }
   }
@@ -30,7 +33,7 @@ module.exports = {
     ) {
       next();
     } else {
-      res.end(400);
+      res.status(400).end();
     }
   }
 };
