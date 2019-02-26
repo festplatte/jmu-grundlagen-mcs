@@ -1,7 +1,9 @@
-const _ = require("lodash");
-const db = require("../db");
+const db = require("../utils/db");
 const hash = require("../utils/hash");
 
+/**
+ * Creates a new user in the database if it still doesn't exist.
+ */
 module.exports = function(req, res, next) {
   const user = req.body;
   user.password = hash(user.password);
@@ -13,10 +15,12 @@ module.exports = function(req, res, next) {
         if (err) {
           res.status(500).send(err);
         } else {
-          if (_.has(result, "email")) {
+          if (result && result.email) {
+            // user already exists
             res.status(400).send("The email address is already registered.");
             db.close();
           } else {
+            // user not yet in db -> register
             dbo.collection("users").insertOne(user, function(err, result) {
               if (err) {
                 res.status(500).send(err);

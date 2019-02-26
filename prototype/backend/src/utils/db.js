@@ -1,5 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
-const config = require("./config").db;
+const config = require("../config").db;
 
 /**
  * Creates a db connection and executes the callback function, if there's no error. Afterwards the db connection is closed.

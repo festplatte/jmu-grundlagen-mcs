@@ -14,26 +14,32 @@ function validateObject(obj, fields) {
   return true;
 }
 
-module.exports = {
-  user: function(req, res, next) {
-    const user = req.body;
-    if (
-      validateObject(user, [
-        "email",
-        "password",
-        "anrede",
-        "prename",
-        "name",
-        "address",
-        "plz",
-        "city",
-        "country",
-        "phone"
-      ])
-    ) {
+/**
+ * Creates a function that validates the request body, if it contains the given fields
+ * @param {Array} fields
+ */
+function createValidation(fields) {
+  return (req, res, next) => {
+    if (validateObject(req.body, fields)) {
       next();
     } else {
       res.status(400).end();
     }
-  }
+  };
+}
+
+module.exports = {
+  users: createValidation([
+    "email",
+    "password",
+    "anrede",
+    "prename",
+    "name",
+    "address",
+    "plz",
+    "city",
+    "country",
+    "phone"
+  ]),
+  auth: createValidation(["email", "password"])
 };

@@ -7,5 +7,8 @@ module.exports = {
       auth: { user: "administrator", password: "administrator" },
       useNewUrlParser: true
     }
+  },
+  auth: {
+    jwtSecret: "dfg/8fdg9skad"
   }
 };
