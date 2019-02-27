@@ -84,8 +84,8 @@ class Header extends React.Component {
     return (
       <header>
         <CssBaseline />
-        <AppBar position="static" color="default" className={classes.appBar}>
-          <Toolbar>
+        <AppBar position="static" className={classes.appBar}>
+          <Toolbar variant="dense">
             <Typography
               variant="h6"
               color="inherit"
@@ -108,11 +108,11 @@ class Header extends React.Component {
               />
             </div>
             <div className={classes.grow} />
-            <Link to="/product">
-              <Button>Demo Produktseite</Button>
-            </Link>
-            <Button color="inherit">
-              <Badge badgeContent={4} color="secondary">
+            <Button component={Link} to="/product">
+              Demo Produktseite
+            </Button>
+            <Button component={Link} to="/cart">
+              <Badge badgeContent={this.props.cart.length} color="secondary">
                 <ShoppingCart />
               </Badge>
               Einkaufswagen
@@ -127,12 +127,15 @@ class Header extends React.Component {
                 Abmelden
               </Button>
             ) : (
-              <Link to="/signin">
-                <Button color="primary" variant="outlined">
-                  <Person />
-                  Anmelden
-                </Button>
-              </Link>
+              <Button
+                component={Link}
+                to="/signin"
+                color="primary"
+                variant="outlined"
+              >
+                <Person />
+                Anmelden
+              </Button>
             )}
           </Toolbar>
         </AppBar>
@@ -142,6 +145,6 @@ class Header extends React.Component {
 }
 
 export default connect(
-  state => ({ user: state.auth.user }),
-  { logOut: logOut }
+  state => ({ user: state.auth.user, cart: state.cart.cart }),
+  { logOut }
 )(withRouter(withStyles(styles)(Header)));
