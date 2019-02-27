@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
@@ -13,6 +14,7 @@ import Person from "@material-ui/icons/Person";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import { Link, withRouter } from "react-router-dom";
+import { logOut } from "../redux/actions/authActions";
 
 const styles = theme => ({
   appBar: {
@@ -115,12 +117,23 @@ class Header extends React.Component {
               </Badge>
               Einkaufswagen
             </Button>
-            <Link to="/signin">
-              <Button color="primary" variant="outlined">
+            {this.props.user ? (
+              <Button
+                onClick={this.props.logOut}
+                color="primary"
+                variant="outlined"
+              >
                 <Person />
-                Login
+                Abmelden
               </Button>
-            </Link>
+            ) : (
+              <Link to="/signin">
+                <Button color="primary" variant="outlined">
+                  <Person />
+                  Anmelden
+                </Button>
+              </Link>
+            )}
           </Toolbar>
         </AppBar>
       </header>
@@ -128,4 +141,7 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(withStyles(styles)(Header));
+export default connect(
+  state => ({ user: state.auth.user }),
+  { logOut: logOut }
+)(withRouter(withStyles(styles)(Header)));

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -16,6 +17,7 @@ import apiClient from "../utils/apiClient";
 import buildFormJson from "../utils/buildFormJson";
 import { Snackbar } from "@material-ui/core";
 import StatusSnackbar from "../components/StatusSnackbar";
+import { signIn } from "../redux/actions/authActions";
 
 const styles = theme => ({
   paper: {
@@ -59,10 +61,10 @@ class SignIn extends React.Component {
   signIn = e => {
     e.preventDefault();
     const user = buildFormJson(e.currentTarget);
-    console.log(user);
     apiClient.authenticateUser(user).then(res => {
       if (res.status === 200) {
         this.props.history.push("/");
+        this.props.signIn(user);
       } else {
         this.setState({
           statusbarOpen: true
@@ -130,4 +132,7 @@ class SignIn extends React.Component {
   }
 }
 
-export default withRouter(withStyles(styles)(SignIn));
+export default connect(
+  null,
+  { signIn: signIn }
+)(withRouter(withStyles(styles)(SignIn)));

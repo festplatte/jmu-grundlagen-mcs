@@ -1,10 +1,12 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Footer from "./components/Footer";
 import routes from "./routes";
+import store from "./redux/store";
 
 const theme = createMuiTheme();
 
@@ -27,13 +29,15 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Router>
-          <>
-            <Header />
-            <main className="layout">{routes}</main>
-            <Footer />
-          </>
-        </Router>
+        <Provider store={store}>
+          <Router>
+            <>
+              <Header />
+              <main className="layout">{routes}</main>
+              <Footer />
+            </>
+          </Router>
+        </Provider>
       </MuiThemeProvider>
     );
   }
