@@ -71,11 +71,10 @@ class Header extends React.Component {
     history: PropTypes.object.isRequired
   };
 
-  onSearch() {
+  onSearch = () => {
     console.log("onSearch called");
-    const { history } = this.props;
-    history.push("/search");
-  }
+    this.props.history.push("/search");
+  };
 
   render() {
     const { classes } = this.props;
@@ -116,10 +115,12 @@ class Header extends React.Component {
               </Badge>
               Einkaufswagen
             </Button>
-            <Button color="primary" variant="outlined">
-              <Person />
-              Login
-            </Button>
+            <Link to="/signin">
+              <Button color="primary" variant="outlined">
+                <Person />
+                Login
+              </Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </header>

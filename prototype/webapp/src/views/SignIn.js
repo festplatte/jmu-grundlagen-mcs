@@ -11,7 +11,11 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import apiClient from "../utils/apiClient";
+import buildFormJson from "../utils/buildFormJson";
+import { Snackbar } from "@material-ui/core";
+import StatusSnackbar from "../components/StatusSnackbar";
 
 const styles = theme => ({
   paper: {
@@ -48,6 +52,31 @@ class SignIn extends React.Component {
     classes: PropTypes.object.isRequired
   };
 
+  state = {
+    statusbarOpen: false
+  };
+
+  signIn = e => {
+    e.preventDefault();
+    const user = buildFormJson(e.currentTarget);
+    console.log(user);
+    apiClient.authenticateUser(user).then(res => {
+      if (res.status === 200) {
+        this.props.history.push("/");
+      } else {
+        this.setState({
+          statusbarOpen: true
+        });
+      }
+    });
+  };
+
+  closeStatusbar = () => {
+    this.setState({
+      statusbarOpen: false
+    });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -57,15 +86,22 @@ class SignIn extends React.Component {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Anmelden
         </Typography>
-        <form className={classes.form}>
+        <Snackbar open={this.state.statusbarOpen} onClose={this.closeStatusbar}>
+          <StatusSnackbar
+            variant="error"
+            message="Falsches Passwort oder Benutzer nicht vorhanden."
+            onClose={this.closeStatusbar}
+          />
+        </Snackbar>
+        <form className={classes.form} onSubmit={this.signIn}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email Address</InputLabel>
+            <InputLabel htmlFor="email">Email-Adresse</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
+            <InputLabel htmlFor="password">Passwort</InputLabel>
             <Input
               name="password"
               type="password"
@@ -75,9 +111,10 @@ class SignIn extends React.Component {
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label="angemeldet bleiben"
           />
-          <Link to="/register">Neues Kundenkonto anlegen</Link>
+          <br />
+          <Link to="/register">Neues Kundenkonto registrieren</Link>
           <Button
             type="submit"
             fullWidth
@@ -85,7 +122,7 @@ class SignIn extends React.Component {
             color="primary"
             className={classes.submit}
           >
-            Sign in
+            Anmelden
           </Button>
         </form>
       </Paper>
@@ -93,4 +130,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default withStyles(styles)(SignIn);
+export default withRouter(withStyles(styles)(SignIn));

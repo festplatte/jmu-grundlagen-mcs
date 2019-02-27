@@ -47,7 +47,6 @@ class Register extends React.Component {
     e.preventDefault();
     const user = buildFormJson(e.currentTarget);
     apiClient.registerUser(user).then(state => {
-      console.log("renew state");
       this.setState({
         statusbarOpen: true,
         success: state.hasSuccess,
@@ -89,7 +88,7 @@ class Register extends React.Component {
     return (
       <Paper className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Neuanmeldung bei Alternate.de
+          Registrieren bei Alternate.de
         </Typography>
         <Snackbar open={this.state.statusbarOpen} onClose={this.closeStatusbar}>
           {statusbar}
@@ -107,7 +106,7 @@ class Register extends React.Component {
             </p>
             <Grid container spacing={40}>
               <Grid item md={6} sm={12} xs={12}>
-                <h2>Anmeldedaten</h2>
+                <h2>Persönliche Daten</h2>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="email">Email-Adresse</InputLabel>
                   <Input
@@ -126,9 +125,6 @@ class Register extends React.Component {
                     autoComplete="current-password"
                   />
                 </FormControl>
-              </Grid>
-              <Grid item md={6} sm={12} xs={12}>
-                <h2>Adresse</h2>
                 <Grid container spacing={40}>
                   <Grid item xs={6}>
                     <FormControl margin="normal" required fullWidth>
@@ -162,6 +158,9 @@ class Register extends React.Component {
                   <InputLabel htmlFor="name">Nachname</InputLabel>
                   <Input id="name" name="name" />
                 </FormControl>
+              </Grid>
+              <Grid item md={6} sm={12} xs={12}>
+                <h2>Adresse</h2>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="address">
                     Straße und Hausnummer
@@ -203,7 +202,7 @@ class Register extends React.Component {
               color="primary"
               className={classes.submit}
             >
-              Anmelden
+              Registrieren
             </Button>
           </form>
         )}

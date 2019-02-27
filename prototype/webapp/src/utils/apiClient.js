@@ -1,7 +1,7 @@
 class ApiClient {
   static baseUrl = "http://localhost:3010";
 
-  jwt = "";
+  jwt = null;
 
   async registerUser(user) {
     return this.handleResponse(
@@ -13,6 +13,21 @@ class ApiClient {
         body: JSON.stringify(user)
       })
     );
+  }
+
+  async authenticateUser(user) {
+    return fetch(`${ApiClient.baseUrl}/auth`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    }).then(res => {
+      if (res && res.status === 200) {
+        this.jwt = res.body;
+      }
+      return res;
+    });
   }
 
   handleResponse(response) {
