@@ -4,8 +4,6 @@ import { removeFromCart } from "../redux/actions/cartActions";
 import { Button } from "@material-ui/core";
 import ProductList from "../components/ProductList";
 
-const products = [{ title: "P1" }, { title: "P2" }];
-
 class Cart extends React.Component {
   render() {
     return (
