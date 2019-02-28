@@ -11,7 +11,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: administrator
       MONGO_INITDB_ROOT_PASSWORD: administrator
     volumes:
-      - ./.data/mongodb:/data/db
+      - alternate-mongodata:/data/db
     ports:
       - "27017:27017"
 
@@ -45,3 +45,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+
+volumes:
+  alternate-mongodata:
