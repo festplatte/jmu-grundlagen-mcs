@@ -84,7 +84,7 @@ class Header extends React.Component {
     return (
       <header>
         <CssBaseline />
-        <AppBar position="static" className={classes.appBar}>
+        <AppBar color="default" position="static" className={classes.appBar}>
           <Toolbar variant="dense">
             <Typography
               variant="h6"

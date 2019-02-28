@@ -25,8 +25,12 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    links:
+      - mongodb:27017
+    environment:
+      MONGODB_HOST: mongodb
     ports:
-      - "3010:3000"
+      - "3010:3010"
 
   # ------------------------------------------------------
   # WEBAPP
