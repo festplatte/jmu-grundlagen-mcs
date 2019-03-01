@@ -18,7 +18,8 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2
   },
   button: {
-    marginLeft: theme.spacing.unit * 2
+    marginLeft: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
   leftIcon: {
     marginRight: theme.spacing.unit
@@ -32,6 +33,8 @@ const styles = theme => ({
 });
 
 class Cart extends React.Component {
+  hasProducts = () => this.props.products && this.props.products.length > 0;
+
   render() {
     const { classes } = this.props;
 
@@ -39,7 +42,7 @@ class Cart extends React.Component {
       (acc, x) => acc + x.price * x.amount,
       0
     );
-    const shippingCost = this.props.products.length > 0 ? 4.95 : 0;
+    const shippingCost = this.hasProducts() > 0 ? 4.95 : 0;
 
     return (
       <>
@@ -83,15 +86,27 @@ class Cart extends React.Component {
             <ChevronLeft className={classes.leftIcon} />
             weiter einkaufen
           </Button>
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-            component={Link}
-            to="/checkout"
-          >
-            zur Kasse <ChevronRight className={classes.rightIcon} />
-          </Button>
+          {this.hasProducts() ? (
+            <>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                component={Link}
+                to="/checkout"
+              >
+                zur Kasse <ChevronRight className={classes.rightIcon} />
+              </Button>
+              <br />
+              <Button className={classes.button} variant="contained">
+                direkt zu Paypal <ChevronRight className={classes.rightIcon} />
+              </Button>
+              <br />
+              <Button className={classes.button} variant="contained">
+                masterpass <ChevronRight className={classes.rightIcon} />
+              </Button>
+            </>
+          ) : null}
         </div>
       </>
     );
