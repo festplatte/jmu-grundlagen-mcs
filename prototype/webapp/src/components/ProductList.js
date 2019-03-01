@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import numeral from "../utils/numeral";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
+import { Grid, Fab } from "@material-ui/core";
+import { ExposurePlus1, ExposureNeg1, Delete } from "@material-ui/icons";
 
 const styles = theme => ({
   card: {
@@ -17,6 +20,9 @@ const styles = theme => ({
   },
   cardMedia: {
     width: 160
+  },
+  button: {
+    margin: theme.spacing.unit
   }
 });
 
@@ -24,7 +30,9 @@ class ProductList extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     product: PropTypes.object.isRequired,
-    onRemove: PropTypes.func
+    onRemove: PropTypes.func,
+    onIncreaseAmount: PropTypes.func,
+    onDecreaseAmount: PropTypes.func
   };
 
   render() {
@@ -41,15 +49,46 @@ class ProductList extends React.Component {
         </Hidden>
         <div className={classes.cardDetails}>
           <CardContent>
-            <Typography component="h2" variant="h5">
-              {product.title}
-            </Typography>
-            <Typography variant="subtitle1" paragraph>
-              TODO hier muss Anzahl, Preis, etc.
-            </Typography>
-            <Typography variant="subtitle1" color="primary">
-              <Button onClick={this.props.onRemove}>entfernen</Button>
-            </Typography>
+            <Grid container>
+              <Grid item sm={6} xs={12}>
+                <Typography component="h2" variant="h5">
+                  {product.title}
+                </Typography>
+                <Typography variant="subtitle1" paragraph>
+                  {product.desc}
+                </Typography>
+              </Grid>
+              <Grid item sm={3} xs={12}>
+                <Typography variant="h5" align="right" paragraph>
+                  {numeral(product.price).format()}
+                </Typography>
+              </Grid>
+              <Grid item sm={3} xs={12}>
+                <Typography variant="h5" align="right" component="span">
+                  <Fab
+                    size="small"
+                    className={classes.button}
+                    aria-label="weniger"
+                    onClick={this.props.onDecreaseAmount}
+                  >
+                    <ExposureNeg1 />
+                  </Fab>{" "}
+                  {product.amount}{" "}
+                  <Fab
+                    size="small"
+                    className={classes.button}
+                    aria-label="mehr"
+                    onClick={this.props.onIncreaseAmount}
+                  >
+                    <ExposurePlus1 />
+                  </Fab>
+                  <br />
+                  <Button variant="contained" onClick={this.props.onRemove}>
+                    <Delete /> entfernen
+                  </Button>
+                </Typography>
+              </Grid>
+            </Grid>
           </CardContent>
         </div>
       </Card>

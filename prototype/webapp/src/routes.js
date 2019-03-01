@@ -6,6 +6,8 @@ import Product from "./views/Product";
 import Register from "./views/Register";
 import SignIn from "./views/SignIn";
 import Cart from "./views/Cart";
+import Checkout from "./views/Checkout";
+import Error404 from "./views/Error404";
 
 export default (
   <Switch>
@@ -15,5 +17,7 @@ export default (
     <Route path="/register" component={Register} />
     <Route path="/signin" component={SignIn} />
     <Route path="/cart" component={Cart} />
+    <Route path="/checkout" component={Checkout} />
+    <Route path="*" component={Error404} />
   </Switch>
 );

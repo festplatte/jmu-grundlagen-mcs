@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import apiClient from "../utils/apiClient";
 import buildFormJson from "../utils/buildFormJson";
 import { Snackbar } from "@material-ui/core";
@@ -135,4 +135,4 @@ class SignIn extends React.Component {
 export default connect(
   null,
   { signIn: signIn }
-)(withRouter(withStyles(styles)(SignIn)));
+)(withStyles(styles)(SignIn));
