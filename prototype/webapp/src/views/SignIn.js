@@ -2,22 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Link } from "react-router-dom";
 import apiClient from "../utils/apiClient";
-import buildFormJson from "../utils/buildFormJson";
 import { Snackbar } from "@material-ui/core";
 import StatusSnackbar from "../components/StatusSnackbar";
 import { signIn } from "../redux/actions/authActions";
+import SignInForm from "../components/SignInForm";
 
 const styles = theme => ({
   paper: {
@@ -39,13 +32,6 @@ const styles = theme => ({
   avatar: {
     margin: theme.spacing.unit,
     backgroundColor: theme.palette.secondary.main
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing.unit
-  },
-  submit: {
-    marginTop: theme.spacing.unit * 3
   }
 });
 
@@ -58,9 +44,7 @@ class SignIn extends React.Component {
     statusbarOpen: false
   };
 
-  signIn = e => {
-    e.preventDefault();
-    const user = buildFormJson(e.currentTarget);
+  signIn = user => {
     apiClient.authenticateUser(user).then(res => {
       if (res.status === 200) {
         this.props.history.push("/");
@@ -97,7 +81,7 @@ class SignIn extends React.Component {
             onClose={this.closeStatusbar}
           />
         </Snackbar>
-        <form className={classes.form} onSubmit={this.signIn}>
+        {/* <form className={classes.form} onSubmit={this.signIn}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email-Adresse</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus />
@@ -126,7 +110,8 @@ class SignIn extends React.Component {
           >
             Anmelden
           </Button>
-        </form>
+        </form> */}
+        <SignInForm onSignIn={this.signIn} />
       </Paper>
     );
   }
