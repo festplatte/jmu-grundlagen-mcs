@@ -4,7 +4,12 @@ import ProductPreview from "../components/ProductPreview/ProductPreview";
 import { addToCart } from "../redux/actions/cartActions";
 import { Button } from "@material-ui/core";
 
-const products = [{ title: "P1", description: "Ein Smartphone", tags: "", price: "", image: "phone-a.svg" }, { title: "P2", description: "Ein Smartphone", tags: "", price: "", image: "phone-b.svg" }, { title: "P3", description: "Eine Grafikkarte", tags: "", price: "", image: "gpu-a.svg" }, { title: "P4", description: "Eine Grafikkarte", tags: "", price: "", image: "gpu-b.svg" }, { title: "P5", description: "Arbeitsspeicher 8 GB DDR4", tags: "", price: "", image: "ram-a.svg" }, { title: "P6", description: "Arbeitsspeicher 8 GB DDR4", tags: "", price: "", image: "ram-b.svg" }];
+const products = [{ title: "P1", description: "Ein Smartphone", tags: "", price: "", image: "phone-a.svg" },
+{ title: "P2", description: "Ein Smartphone", tags: "", price: "", image: "phone-b.svg" },
+{ title: "P3", description: "Eine Grafikkarte", tags: "", price: "", image: "gpu-a.svg" },
+{ title: "P4", description: "Eine Grafikkarte", tags: "", price: "", image: "gpu-b.svg" },
+{ title: "P5", description: "Arbeitsspeicher 8 GB DDR4", tags: "", price: "", image: "ram-a.svg" },
+{ title: "P6", description: "Arbeitsspeicher 8 GB DDR4", tags: "", price: "", image: "ram-b.svg" }];
 
 class Product extends React.Component {
   render() {
