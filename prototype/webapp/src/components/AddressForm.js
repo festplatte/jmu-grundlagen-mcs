@@ -9,7 +9,7 @@ function AddressForm() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Rechnungs- und Lieferadresse
       </Typography>
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
@@ -17,7 +17,7 @@ function AddressForm() {
             required
             id="firstName"
             name="firstName"
-            label="First name"
+            label="Vorname"
             fullWidth
             autoComplete="fname"
           />
@@ -27,7 +27,7 @@ function AddressForm() {
             required
             id="lastName"
             name="lastName"
-            label="Last name"
+            label="Nachname"
             fullWidth
             autoComplete="lname"
           />
@@ -37,7 +37,7 @@ function AddressForm() {
             required
             id="address1"
             name="address1"
-            label="Address line 1"
+            label="Adresse"
             fullWidth
             autoComplete="billing address-line1"
           />
@@ -46,7 +46,7 @@ function AddressForm() {
           <TextField
             id="address2"
             name="address2"
-            label="Address line 2"
+            label="Adresszusatz"
             fullWidth
             autoComplete="billing address-line2"
           />
@@ -56,7 +56,7 @@ function AddressForm() {
             required
             id="city"
             name="city"
-            label="City"
+            label="Ort"
             fullWidth
             autoComplete="billing address-level2"
           />

@@ -50,25 +50,16 @@ const styles = theme => ({
 });
 
 const steps = ["Login oder Gast", "Adressen", "Zahlung", "Zusammenfassung"];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <GuestOrLoggedIn />;
-    case 1:
-      return <AddressForm />;
-    case 2:
-      return <PaymentForm />;
-    case 3:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
+const LOGIN_GUEST = 0;
+const ADDRESS = 1;
+const PAYMENT = 2;
+const REVIEW = 3;
 
 class Checkout extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    cart: PropTypes.object,
+    user: PropTypes.object
   };
 
   state = {
@@ -93,13 +84,54 @@ class Checkout extends React.Component {
     });
   };
 
+  handleLoggedIn = () => {
+    if (this.isLoggedIn()) {
+      this.goToStep(REVIEW);
+    }
+  };
+
+  isLoggedIn = () => {
+    return this.props.user && this.props.user.email;
+  };
+
+  goToStep(step) {
+    this.setState({
+      activeStep: step
+    });
+  }
+
+  getStepContent = step => {
+    switch (step) {
+      case LOGIN_GUEST:
+        return (
+          <GuestOrLoggedIn
+            onGuest={this.handleNext}
+            onSignIn={this.handleLoggedIn}
+          />
+        );
+      case ADDRESS:
+        return <AddressForm />;
+      case PAYMENT:
+        return <PaymentForm />;
+      case REVIEW:
+        return <Review />;
+      default:
+        throw new Error("Unknown step");
+    }
+  };
+
+  componentDidMount = () => {
+    // TODO use when implemented
+    // this.handleLoggedIn();
+  };
+
   render() {
     const { classes } = this.props;
     const { activeStep } = this.state;
 
     return (
       <Grid container spacing={40}>
-        <Grid item sm={8}>
+        <Grid item md={8}>
           <Paper className={classes.paper}>
             <Stepper activeStep={activeStep} className={classes.stepper}>
               {steps.map(label => (
@@ -122,31 +154,35 @@ class Checkout extends React.Component {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  {getStepContent(activeStep)}
+                  {this.getStepContent(activeStep)}
                   <div className={classes.buttons}>
-                    {activeStep !== 0 && (
+                    {activeStep > 1 && (
                       <Button
                         onClick={this.handleBack}
                         className={classes.button}
                       >
-                        Back
+                        Zurück
                       </Button>
                     )}
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={this.handleNext}
-                      className={classes.button}
-                    >
-                      {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                    </Button>
+                    {activeStep > 0 && (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleNext}
+                        className={classes.button}
+                      >
+                        {activeStep === steps.length - 1
+                          ? "Bestellung abschicken"
+                          : "Weiter"}
+                      </Button>
+                    )}
                   </div>
                 </React.Fragment>
               )}
             </React.Fragment>
           </Paper>
         </Grid>
-        <Grid item sm={4}>
+        <Grid item md={4}>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h5" align="center">
               Bestellung
@@ -165,6 +201,7 @@ class Checkout extends React.Component {
   }
 }
 
-export default connect(state => ({ products: state.cart.cart }))(
-  withStyles(styles)(Checkout)
-);
+export default connect(state => ({
+  products: state.cart.cart,
+  user: state.auth.user
+}))(withStyles(styles)(Checkout));

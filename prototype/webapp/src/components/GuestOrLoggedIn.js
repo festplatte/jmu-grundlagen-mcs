@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Button } from "@material-ui/core";
 import { ChevronRight } from "@material-ui/icons";
+import SignInForm from "./SignInForm";
 
 const styles = theme => ({
   contentSection: {
@@ -24,29 +26,46 @@ const styles = theme => ({
 });
 
 class GuestOrLoggedIn extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    onSignIn: PropTypes.func.isRequired,
+    onGuest: PropTypes.func.isRequired
+  };
+
+  handleSignIn = user => {
+    // TODO do something
+    this.props.onSignIn();
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
       <Grid container>
-        <Grid item md={8}>
+        <Grid item md={7}>
           Haben Sie bereits ein Kundenkonto? Dann können Sie sich einloggen oder
           hier eines erstellen.
           <br />
-          TODO import signin form
+          <SignInForm onSignIn={this.handleSignIn} />
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={5}>
           <Button
             className={classes.button}
+            fullWidth
             variant="contained"
             color="primary"
             component={Link}
-            to="/checkout"
+            to="/register"
           >
             Kundenkonto erstellen <ChevronRight className={classes.rightIcon} />
           </Button>
           <br />
-          <Button className={classes.button} variant="contained">
+          <Button
+            className={classes.button}
+            fullWidth
+            variant="contained"
+            onClick={this.props.onGuest}
+          >
             als Gast bestellen <ChevronRight className={classes.rightIcon} />
           </Button>
         </Grid>
