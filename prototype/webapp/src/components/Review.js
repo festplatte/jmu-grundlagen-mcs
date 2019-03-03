@@ -7,6 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import numeral from "../utils/numeral";
+import { Link } from "@material-ui/core";
 
 const addresses = [
   "1 Material-UI Drive",
@@ -43,7 +44,7 @@ class Review extends React.Component {
   render() {
     const { classes, products } = this.props;
     return (
-      <React.Fragment>
+      <>
         <Typography variant="h6" gutterBottom>
           Zusammenfassung
         </Typography>
@@ -57,10 +58,14 @@ class Review extends React.Component {
             </ListItem>
           ))}
           <ListItem className={classes.listItem}>
+            <ListItemText primary="Versandkosten" />
+            <Typography variant="body2">{numeral(4.95).format()}</Typography>
+          </ListItem>
+          <ListItem className={classes.listItem}>
             <ListItemText primary="Summe" />
             <Typography variant="subtitle1" className={classes.total}>
               {numeral(
-                products.reduce((acc, x) => acc + x.price * x.amount, 0)
+                4.95 + products.reduce((acc, x) => acc + x.price * x.amount, 0)
               ).format()}
             </Typography>
           </ListItem>
@@ -68,14 +73,20 @@ class Review extends React.Component {
         <Grid container spacing={16}>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" gutterBottom className={classes.title}>
-              Adresse
+              Adresse{" "}
+              <Link variant="body1" href="#">
+                ändern
+              </Link>
             </Typography>
             <Typography gutterBottom>John Smith</Typography>
             <Typography gutterBottom>{addresses.join(", ")}</Typography>
           </Grid>
           <Grid item container direction="column" xs={12} sm={6}>
             <Typography variant="h6" gutterBottom className={classes.title}>
-              Zahlungsdetails
+              Zahlungsdetails{" "}
+              <Link variant="body1" href="#">
+                ändern
+              </Link>
             </Typography>
             <Grid container>
               {payments.map(payment => (
@@ -91,7 +102,7 @@ class Review extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-      </React.Fragment>
+      </>
     );
   }
 }

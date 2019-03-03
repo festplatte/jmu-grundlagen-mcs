@@ -81,36 +81,6 @@ class SignIn extends React.Component {
             onClose={this.closeStatusbar}
           />
         </Snackbar>
-        {/* <form className={classes.form} onSubmit={this.signIn}>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email-Adresse</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
-          </FormControl>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Passwort</InputLabel>
-            <Input
-              name="password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-          </FormControl>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="angemeldet bleiben"
-          />
-          <br />
-          <Link to="/register">Neues Kundenkonto registrieren</Link>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Anmelden
-          </Button>
-        </form> */}
         <SignInForm onSignIn={this.signIn} />
       </Paper>
     );

@@ -30,6 +30,16 @@ class ApiClient {
     });
   }
 
+  async placeOrder(order) {
+    return fetch(`${ApiClient.baseUrl}/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order)
+    });
+  }
+
   handleResponse(response) {
     return response
       .then(res => ({

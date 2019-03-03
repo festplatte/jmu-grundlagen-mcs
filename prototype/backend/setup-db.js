@@ -23,6 +23,10 @@ MongoClient.connect(url, options, function(err, db) {
   dbo.createCollection("users", function(err, res) {
     if (err) throw err;
     console.log("Collection created!");
-    db.close();
+    dbo.createCollection("orders", function(err, res) {
+      if (err) throw err;
+      console.log("Collection created!");
+      db.close();
+    });
   });
 });

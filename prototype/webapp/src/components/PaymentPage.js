@@ -54,6 +54,7 @@ class PaymentForm extends React.Component {
               minDate={new Date()}
               value={this.state.paymentDate}
               onChange={this.handleDateChange}
+              fullWidth
             />
           </Grid>
           <Grid item xs={12} md={6}>

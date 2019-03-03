@@ -7,26 +7,17 @@ import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import GuestOrLoggedIn from "../components/GuestOrLoggedIn";
 import AddressPage from "../components/AddressPage";
 import PaymentPage from "../components/PaymentPage";
 import Review from "../components/Review";
-import { Grid, List, ListItem } from "@material-ui/core";
 import apiClient from "../utils/apiClient";
 import { signIn } from "../redux/actions/authActions";
+import { Snackbar } from "@material-ui/core";
+import StatusSnackbar from "../components/StatusSnackbar";
+import ConfirmOrder from "../components/ConfirmOrder";
 
 const styles = theme => ({
-  // layout: {
-  //   width: "auto",
-  //   marginLeft: theme.spacing.unit * 2,
-  //   marginRight: theme.spacing.unit * 2,
-  //   [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
-  //     width: 600,
-  //     marginLeft: "auto",
-  //     marginRight: "auto"
-  //   }
-  // },
   paper: {
     marginTop: theme.spacing.unit * 3,
     marginBottom: theme.spacing.unit * 3,
@@ -65,7 +56,9 @@ class Checkout extends React.Component {
   };
 
   state = {
-    activeStep: 0
+    activeStep: 0,
+    statusbarOpen: false,
+    statusbarMsg: null
   };
 
   handleNext = () => {
@@ -92,26 +85,43 @@ class Checkout extends React.Component {
         this.props.signIn(user);
       } else {
         this.setState({
-          statusbarOpen: true
+          statusbarOpen: true,
+          statusbarMsg: "Falsches Passwort oder Benutzer nicht vorhanden."
         });
       }
     });
   };
 
   handlePlaceOrder = () => {
-    // TODO implement api call
     const { user, products } = this.props;
     if (user && user.email) {
       // do api call only for registered users
-      // const order = { user, products };
+      const order = { user, products };
+      apiClient.placeOrder(order).then(res => {
+        if (res.status === 201) {
+          this.handleNext();
+        } else {
+          this.setState({
+            statusbarOpen: true,
+            statusbarMsg: "Fehler beim Abschicken der Bestellung."
+          });
+        }
+      });
+    } else {
+      this.handleNext();
     }
-    this.handleNext();
   };
 
   checkLoggedIn = user => {
     if (user && user.email) {
       this.goToStep(REVIEW);
     }
+  };
+
+  closeStatusbar = () => {
+    this.setState({
+      statusbarOpen: false
+    });
   };
 
   goToStep(step) {
@@ -153,77 +163,52 @@ class Checkout extends React.Component {
     const { activeStep } = this.state;
 
     return (
-      <Grid container spacing={40}>
-        <Grid item md={8}>
-          <Paper className={classes.paper}>
-            <Stepper activeStep={activeStep} className={classes.stepper}>
-              {steps.map(label => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-            <React.Fragment>
-              {activeStep === steps.length ? (
-                <React.Fragment>
-                  <Typography variant="h5" gutterBottom>
-                    Danke für Ihre Bestellung.
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Your order number is #2001539. We have emailed your order
-                    confirmation, and will send you an update when your order
-                    has shipped.
-                  </Typography>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  {this.getStepContent(activeStep)}
-                  <div className={classes.buttons}>
-                    {activeStep > 1 && (
-                      <Button
-                        onClick={this.handleBack}
-                        className={classes.button}
-                      >
-                        Zurück
-                      </Button>
-                    )}
-                    {activeStep > 0 && (
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={
-                          activeStep === steps.length - 1
-                            ? this.handlePlaceOrder
-                            : this.handleNext
-                        }
-                        className={classes.button}
-                      >
-                        {activeStep === steps.length - 1
-                          ? "Bestellung abschicken"
-                          : "Weiter"}
-                      </Button>
-                    )}
-                  </div>
-                </React.Fragment>
+      <Paper className={classes.paper}>
+        <Stepper activeStep={activeStep} className={classes.stepper}>
+          {steps.map(label => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <Snackbar open={this.state.statusbarOpen} onClose={this.closeStatusbar}>
+          <StatusSnackbar
+            variant="error"
+            message={this.state.statusbarMsg}
+            onClose={this.closeStatusbar}
+          />
+        </Snackbar>
+        {activeStep === steps.length ? (
+          <ConfirmOrder />
+        ) : (
+          <>
+            {this.getStepContent(activeStep)}
+            <div className={classes.buttons}>
+              {activeStep > 1 && (
+                <Button onClick={this.handleBack} className={classes.button}>
+                  Zurück
+                </Button>
               )}
-            </React.Fragment>
-          </Paper>
-        </Grid>
-        <Grid item md={4}>
-          <Paper className={classes.paper}>
-            <Typography component="h1" variant="h5" align="center">
-              Bestellung
-            </Typography>
-            <List>
-              {this.props.products.map((product, i) => (
-                <ListItem divider key={i}>
-                  {product.title} - {product.price}
-                </ListItem>
-              ))}
-            </List>
-          </Paper>
-        </Grid>
-      </Grid>
+              {activeStep > 0 && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={
+                    activeStep === steps.length - 1
+                      ? this.handlePlaceOrder
+                      : this.handleNext
+                  }
+                  className={classes.button}
+                >
+                  {activeStep === steps.length - 1
+                    ? "Bestellung abschicken"
+                    : "Weiter"}
+                </Button>
+              )}
+            </div>
+          </>
+        )}
+      </Paper>
     );
   }
 }

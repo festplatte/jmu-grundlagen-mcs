@@ -115,7 +115,7 @@ class Header extends React.Component {
               <Badge badgeContent={this.props.cart.length} color="secondary">
                 <ShoppingCart />
               </Badge>
-              Einkaufswagen
+              Warenkorb
             </Button>
             {this.props.user ? (
               <Button
