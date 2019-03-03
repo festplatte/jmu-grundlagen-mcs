@@ -32,11 +32,6 @@ class GuestOrLoggedIn extends React.Component {
     onGuest: PropTypes.func.isRequired
   };
 
-  handleSignIn = user => {
-    // TODO do something
-    this.props.onSignIn();
-  };
-
   render() {
     const { classes } = this.props;
 
@@ -46,7 +41,7 @@ class GuestOrLoggedIn extends React.Component {
           Haben Sie bereits ein Kundenkonto? Dann können Sie sich einloggen oder
           hier eines erstellen.
           <br />
-          <SignInForm onSignIn={this.handleSignIn} />
+          <SignInForm onSignIn={this.props.onSignIn} />
         </Grid>
         <Grid item md={5}>
           <Button

@@ -2,8 +2,11 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
+import DateFnsUtils from "@date-io/date-fns";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import { MuiPickersUtilsProvider } from "material-ui-pickers";
+import deLocale from "date-fns/locale/de";
 import Footer from "./components/Footer";
 import routes from "./routes";
 import store from "./redux/store";
@@ -29,15 +32,17 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Provider store={store}>
-          <Router>
-            <>
-              <Header />
-              <main className="layout">{routes}</main>
-              <Footer />
-            </>
-          </Router>
-        </Provider>
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={deLocale}>
+          <Provider store={store}>
+            <Router>
+              <>
+                <Header />
+                <main className="layout">{routes}</main>
+                <Footer />
+              </>
+            </Router>
+          </Provider>
+        </MuiPickersUtilsProvider>
       </MuiThemeProvider>
     );
   }

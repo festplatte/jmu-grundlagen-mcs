@@ -9,10 +9,12 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import GuestOrLoggedIn from "../components/GuestOrLoggedIn";
-import AddressForm from "../components/AddressForm";
-import PaymentForm from "../components/PaymentForm";
+import AddressPage from "../components/AddressPage";
+import PaymentPage from "../components/PaymentPage";
 import Review from "../components/Review";
 import { Grid, List, ListItem } from "@material-ui/core";
+import apiClient from "../utils/apiClient";
+import { signIn } from "../redux/actions/authActions";
 
 const styles = theme => ({
   // layout: {
@@ -58,7 +60,7 @@ const REVIEW = 3;
 class Checkout extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    cart: PropTypes.object,
+    products: PropTypes.array,
     user: PropTypes.object
   };
 
@@ -84,14 +86,32 @@ class Checkout extends React.Component {
     });
   };
 
-  handleLoggedIn = () => {
-    if (this.isLoggedIn()) {
-      this.goToStep(REVIEW);
-    }
+  handleSignIn = user => {
+    apiClient.authenticateUser(user).then(res => {
+      if (res.status === 200) {
+        this.props.signIn(user);
+      } else {
+        this.setState({
+          statusbarOpen: true
+        });
+      }
+    });
   };
 
-  isLoggedIn = () => {
-    return this.props.user && this.props.user.email;
+  handlePlaceOrder = () => {
+    // TODO implement api call
+    const { user, products } = this.props;
+    if (user && user.email) {
+      // do api call only for registered users
+      // const order = { user, products };
+    }
+    this.handleNext();
+  };
+
+  checkLoggedIn = user => {
+    if (user && user.email) {
+      this.goToStep(REVIEW);
+    }
   };
 
   goToStep(step) {
@@ -106,23 +126,26 @@ class Checkout extends React.Component {
         return (
           <GuestOrLoggedIn
             onGuest={this.handleNext}
-            onSignIn={this.handleLoggedIn}
+            onSignIn={this.handleSignIn}
           />
         );
       case ADDRESS:
-        return <AddressForm />;
+        return <AddressPage />;
       case PAYMENT:
-        return <PaymentForm />;
+        return <PaymentPage />;
       case REVIEW:
-        return <Review />;
+        return <Review products={this.props.products} />;
       default:
         throw new Error("Unknown step");
     }
   };
 
   componentDidMount = () => {
-    // TODO use when implemented
-    // this.handleLoggedIn();
+    this.checkLoggedIn(this.props.user);
+  };
+
+  componentWillReceiveProps = nextProps => {
+    this.checkLoggedIn(nextProps.user);
   };
 
   render() {
@@ -168,7 +191,11 @@ class Checkout extends React.Component {
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={this.handleNext}
+                        onClick={
+                          activeStep === steps.length - 1
+                            ? this.handlePlaceOrder
+                            : this.handleNext
+                        }
                         className={classes.button}
                       >
                         {activeStep === steps.length - 1
@@ -201,7 +228,10 @@ class Checkout extends React.Component {
   }
 }
 
-export default connect(state => ({
-  products: state.cart.cart,
-  user: state.auth.user
-}))(withStyles(styles)(Checkout));
+export default connect(
+  state => ({
+    products: state.cart.cart,
+    user: state.auth.user
+  }),
+  { signIn }
+)(withStyles(styles)(Checkout));

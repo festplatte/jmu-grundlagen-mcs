@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Grid, NativeSelect, Snackbar } from "@material-ui/core";
+import { Snackbar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import buildFormJson from "../utils/buildFormJson";
 import apiClient from "../utils/apiClient";
 import StatusSnackbar from "../components/StatusSnackbar";
+import FormControl from "@material-ui/core/FormControl";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import { Grid, NativeSelect } from "@material-ui/core";
 
 const styles = theme => ({
   paper: {
@@ -106,7 +107,9 @@ class Register extends React.Component {
             </p>
             <Grid container spacing={40}>
               <Grid item md={6} sm={12} xs={12}>
-                <h2>Persönliche Daten</h2>
+                <Typography variant="h6" gutterBottom>
+                  Persönliche Daten
+                </Typography>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="email">Email-Adresse</InputLabel>
                   <Input
@@ -160,7 +163,9 @@ class Register extends React.Component {
                 </FormControl>
               </Grid>
               <Grid item md={6} sm={12} xs={12}>
-                <h2>Adresse</h2>
+                <Typography variant="h6" gutterBottom>
+                  Adresse
+                </Typography>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="address">
                     Straße und Hausnummer
