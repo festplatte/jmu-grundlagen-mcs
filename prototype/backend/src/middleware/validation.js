@@ -41,5 +41,6 @@ module.exports = {
     "country",
     "phone"
   ]),
-  auth: createValidation(["email", "password"])
+  auth: createValidation(["email", "password"]),
+  orders: createValidation(["user", "user.email", "products"])
 };
