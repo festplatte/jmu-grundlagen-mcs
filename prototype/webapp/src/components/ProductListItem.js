@@ -13,7 +13,8 @@ import { ExposurePlus1, ExposureNeg1, Delete } from "@material-ui/icons";
 
 const styles = theme => ({
   card: {
-    display: "flex"
+    display: "flex",
+    margin: theme.spacing.unit
   },
   cardDetails: {
     flex: 1
@@ -26,7 +27,7 @@ const styles = theme => ({
   }
 });
 
-class ProductList extends React.Component {
+class ProductListItem extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     product: PropTypes.object.isRequired,
@@ -55,7 +56,7 @@ class ProductList extends React.Component {
                   {product.title}
                 </Typography>
                 <Typography variant="subtitle1" paragraph>
-                  {product.desc}
+                  {product.description}
                 </Typography>
               </Grid>
               <Grid item sm={3} xs={12}>
@@ -96,4 +97,4 @@ class ProductList extends React.Component {
   }
 }
 
-export default withStyles(styles)(ProductList);
+export default withStyles(styles)(ProductListItem);

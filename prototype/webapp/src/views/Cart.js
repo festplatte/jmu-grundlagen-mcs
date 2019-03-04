@@ -11,7 +11,7 @@ import {
 } from "../redux/actions/cartActions";
 import { Button, Typography, Divider } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
-import ProductList from "../components/ProductList";
+import ProductListItem from "../components/ProductListItem";
 
 const styles = theme => ({
   contentSection: {
@@ -49,9 +49,8 @@ class Cart extends React.Component {
         <h1>Warenkorb</h1>
         <div className={classes.contentSection}>
           {this.props.products.map((product, i) => (
-            <ProductList
+            <ProductListItem
               key={i}
-              className={classes.contentSection}
               product={product}
               onRemove={() => this.props.removeFromCart(product)}
               onIncreaseAmount={() => this.props.addToCart(product)}
@@ -63,12 +62,12 @@ class Cart extends React.Component {
         <div className={classNames(classes.summary, classes.contentSection)}>
           <Typography variant="body2" paragraph>
             Summe: {numeral(productsSum).format()}
-            {shippingCost > 0 ? (
+            {shippingCost > 0 && (
               <>
                 <br />
                 Versandkosten: {numeral(shippingCost).format()}
               </>
-            ) : null}
+            )}
           </Typography>
           <Typography variant="h5" paragraph>
             Gesamtsumme: {numeral(productsSum + shippingCost).format()}
@@ -86,7 +85,7 @@ class Cart extends React.Component {
             <ChevronLeft className={classes.leftIcon} />
             weiter einkaufen
           </Button>
-          {this.hasProducts() ? (
+          {this.hasProducts() && (
             <>
               <Button
                 className={classes.button}
@@ -106,7 +105,7 @@ class Cart extends React.Component {
                 masterpass <ChevronRight className={classes.rightIcon} />
               </Button>
             </>
-          ) : null}
+          )}
         </div>
       </>
     );

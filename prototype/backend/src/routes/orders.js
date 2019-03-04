@@ -22,8 +22,7 @@ module.exports = {
 
   getOrders: (req, res, next) => {
     const email = req.user;
-    const query = { user: { email } };
-    console.log(query);
+    const query = {};
 
     db(function(dbo, db) {
       dbo
@@ -33,7 +32,7 @@ module.exports = {
           if (err) {
             res.status(500).send(err);
           } else {
-            res.status(200).json(result);
+            res.status(200).json(result.filter(x => x.user.email === email));
           }
           db.close();
         });

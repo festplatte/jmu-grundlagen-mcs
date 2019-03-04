@@ -24,7 +24,7 @@ class ApiClient {
       body: JSON.stringify(user)
     }).then(res => {
       if (res && res.status === 200) {
-        this.jwt = res.body;
+        res.text().then(jwt => (this.jwt = jwt));
       }
       return res;
     });
@@ -37,6 +37,15 @@ class ApiClient {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(order)
+    });
+  }
+
+  async getOrders() {
+    return fetch(`${ApiClient.baseUrl}/orders`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.jwt}`
+      }
     });
   }
 

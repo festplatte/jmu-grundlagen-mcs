@@ -51,7 +51,10 @@ class Review extends React.Component {
         <List disablePadding>
           {products.map(product => (
             <ListItem className={classes.listItem} key={product.title}>
-              <ListItemText primary={product.title} secondary={product.desc} />
+              <ListItemText
+                primary={product.title}
+                secondary={product.description}
+              />
               <Typography variant="body2">
                 {`${product.amount} x ${numeral(product.price).format()}`}
               </Typography>
