@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import ProductPreview from "../components/ProductPreview/ProductPreview";
 import { addToCart } from "../redux/actions/cartActions";
-import { Button } from "@material-ui/core";
 import products from "../produkte";
 
 class Product extends React.Component {

@@ -13,6 +13,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import { Grid, NativeSelect } from "@material-ui/core";
+import PaymentForm from "../components/PaymentForm";
 
 const styles = theme => ({
   paper: {
@@ -28,6 +29,9 @@ const styles = theme => ({
     marginTop: theme.spacing.unit
   },
   submit: {
+    marginTop: theme.spacing.unit * 3
+  },
+  heading: {
     marginTop: theme.spacing.unit * 3
   }
 });
@@ -110,7 +114,7 @@ class Register extends React.Component {
                 <Typography variant="h6" gutterBottom>
                   Persönliche Daten
                 </Typography>
-                <FormControl margin="normal" required fullWidth>
+                <FormControl margin="none" required fullWidth>
                   <InputLabel htmlFor="email">Email-Adresse</InputLabel>
                   <Input
                     id="email"
@@ -166,7 +170,7 @@ class Register extends React.Component {
                 <Typography variant="h6" gutterBottom>
                   Adresse
                 </Typography>
-                <FormControl margin="normal" required fullWidth>
+                <FormControl margin="none" required fullWidth>
                   <InputLabel htmlFor="address">
                     Straße und Hausnummer
                   </InputLabel>
@@ -200,6 +204,10 @@ class Register extends React.Component {
                 </FormControl>
               </Grid>
             </Grid>
+            <Typography className={classes.heading} variant="h6" gutterBottom>
+              Zahlungsinformationen
+            </Typography>
+            <PaymentForm />
             <Button
               type="submit"
               fullWidth

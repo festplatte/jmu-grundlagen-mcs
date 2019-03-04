@@ -11,7 +11,6 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2
   },
   button: {
-    marginLeft: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
   },
   leftIcon: {
@@ -36,14 +35,14 @@ class GuestOrLoggedIn extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Grid container>
-        <Grid item md={7}>
+      <Grid container spacing={24}>
+        <Grid item md={7} sm={12} xs={12}>
           Haben Sie bereits ein Kundenkonto? Dann können Sie sich einloggen oder
           hier eines erstellen.
           <br />
           <SignInForm onSignIn={this.props.onSignIn} />
         </Grid>
-        <Grid item md={5}>
+        <Grid item md={5} sm={12} xs={12}>
           <Button
             className={classes.button}
             fullWidth

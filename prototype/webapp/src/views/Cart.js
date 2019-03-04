@@ -48,15 +48,19 @@ class Cart extends React.Component {
       <>
         <h1>Warenkorb</h1>
         <div className={classes.contentSection}>
-          {this.props.products.map((product, i) => (
-            <ProductListItem
-              key={i}
-              product={product}
-              onRemove={() => this.props.removeFromCart(product)}
-              onIncreaseAmount={() => this.props.addToCart(product)}
-              onDecreaseAmount={() => this.props.decreaseProductAmount(product)}
-            />
-          ))}
+          {this.props.products.length > 0
+            ? this.props.products.map((product, i) => (
+                <ProductListItem
+                  key={i}
+                  product={product}
+                  onRemove={() => this.props.removeFromCart(product)}
+                  onIncreaseAmount={() => this.props.addToCart(product)}
+                  onDecreaseAmount={() =>
+                    this.props.decreaseProductAmount(product)
+                  }
+                />
+              ))
+            : "Der Warenkorb ist leer."}
         </div>
         <Divider variant="middle" />
         <div className={classNames(classes.summary, classes.contentSection)}>

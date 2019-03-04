@@ -42,13 +42,13 @@ function AddressPage() {
             </NativeSelect>
           </FormControl>
         </Grid>
-        <Grid item sm={6}>
+        <Grid item xs={6}>
           <FormControl margin="none" required fullWidth>
             <InputLabel htmlFor="prename">Vorname</InputLabel>
             <Input id="prename" name="prename" />
           </FormControl>
         </Grid>
-        <Grid item sm={6}>
+        <Grid item xs={6}>
           <FormControl margin="none" required fullWidth>
             <InputLabel htmlFor="name">Nachname</InputLabel>
             <Input id="name" name="name" />

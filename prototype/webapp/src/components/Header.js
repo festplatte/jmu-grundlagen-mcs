@@ -11,11 +11,13 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Person from "@material-ui/icons/Person";
+import PersonOutline from "@material-ui/icons/PersonOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import Home from "@material-ui/icons/Home";
 import { Link, withRouter } from "react-router-dom";
 import { logOut } from "../redux/actions/authActions";
-import { Menu, MenuItem } from "@material-ui/core";
+import { Menu, MenuItem, Hidden } from "@material-ui/core";
 
 const styles = theme => ({
   appBar: {
@@ -103,14 +105,21 @@ class Header extends React.Component {
         <CssBaseline />
         <AppBar color="default" position="static" className={classes.appBar}>
           <Toolbar variant="dense">
-            <Typography
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.toolbarTitle}
-            >
-              <Link to="/">ALTERNATE</Link>
-            </Typography>
+            <Link to="/">
+              <Hidden smDown>
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                  noWrap
+                  className={classes.toolbarTitle}
+                >
+                  ALTERNATE
+                </Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <Home />
+              </Hidden>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -132,7 +141,7 @@ class Header extends React.Component {
               <Badge badgeContent={this.props.cart.length} color="secondary">
                 <ShoppingCart />
               </Badge>
-              Warenkorb
+              <Hidden smDown>Warenkorb</Hidden>
             </Button>
             {this.props.user ? (
               <>
@@ -144,7 +153,7 @@ class Header extends React.Component {
                   onClick={this.handleMenu}
                 >
                   <Person />
-                  Mein Account
+                  <Hidden smDown>Mein Account</Hidden>
                 </Button>
                 <Menu
                   id="menu-appbar"
@@ -177,8 +186,8 @@ class Header extends React.Component {
                 color="primary"
                 variant="outlined"
               >
-                <Person />
-                Anmelden
+                <PersonOutline />
+                <Hidden smDown>Anmelden</Hidden>
               </Button>
             )}
           </Toolbar>
