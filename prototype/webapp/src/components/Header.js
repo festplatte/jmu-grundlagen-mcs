@@ -15,6 +15,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import { Link, withRouter } from "react-router-dom";
 import { logOut } from "../redux/actions/authActions";
+import { Menu, MenuItem } from "@material-ui/core";
 
 const styles = theme => ({
   appBar: {
@@ -73,13 +74,29 @@ class Header extends React.Component {
     history: PropTypes.object.isRequired
   };
 
+  state = {
+    isMenuOpen: false
+  };
+
   onSearch = () => {
     console.log("onSearch called");
     this.props.history.push("/search");
   };
 
+  handleMenu = e => {
+    this.setState({
+      menuAnchor: this.state.menuAnchor ? null : e.currentTarget
+    });
+  };
+
+  handleLogout = e => {
+    this.props.logOut();
+    this.handleMenu(e);
+  };
+
   render() {
     const { classes } = this.props;
+    const menuOpen = Boolean(this.state.menuAnchor);
 
     return (
       <header>
@@ -118,14 +135,37 @@ class Header extends React.Component {
               Warenkorb
             </Button>
             {this.props.user ? (
-              <Button
-                onClick={this.props.logOut}
-                color="primary"
-                variant="outlined"
-              >
-                <Person />
-                Abmelden
-              </Button>
+              <>
+                <Button
+                  color="primary"
+                  variant="outlined"
+                  aria-owns="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                >
+                  <Person />
+                  Mein Account
+                </Button>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={this.state.menuAnchor}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                  }}
+                  open={menuOpen}
+                  onClose={this.handleMenu}
+                >
+                  <MenuItem onClick={this.handleMenu}>
+                    <Link to="/orders">Meine Bestellungen</Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleLogout}>Abmelden</MenuItem>
+                </Menu>
+              </>
             ) : (
               <Button
                 component={Link}

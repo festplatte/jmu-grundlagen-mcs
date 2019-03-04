@@ -18,5 +18,25 @@ module.exports = {
         db.close();
       });
     });
+  },
+
+  getOrders: (req, res, next) => {
+    const email = req.user;
+    const query = { user: { email } };
+    console.log(query);
+
+    db(function(dbo, db) {
+      dbo
+        .collection("orders")
+        .find(query)
+        .toArray(function(err, result) {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            res.status(200).json(result);
+          }
+          db.close();
+        });
+    });
   }
 };

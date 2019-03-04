@@ -10,6 +10,7 @@ var router = express.Router();
 router.post("/users", validation.users, users.registerUser);
 router.post("/auth", validation.auth, authenticate);
 router.post("/orders", validation.orders, orders.placeOrder);
+router.get("/orders", verifyJwt, orders.getOrders);
 
 // just for test purpose
 router.get("/dummy", verifyJwt, function(req, res) {
