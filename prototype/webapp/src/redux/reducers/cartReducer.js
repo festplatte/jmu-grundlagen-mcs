@@ -5,14 +5,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  cart: [
-    {
-      id: 1,
-      title: "my product",
-      price: 105.99,
-      amount: 3
-    }
-  ]
+  cart: []
 };
 
 export default function(state = initialState, action) {

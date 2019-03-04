@@ -1,6 +1,6 @@
 [
   {
-    "ID": 1,
+    "id": 1,
     "title": "Neustes jPhone der Marke Birne",
     "description": "Ein Smartphone das keine W\u00fcnsche offen lässt bis auf einen Kopfh\u00f6reranschluss und ein Micro SD Card Slot.",
     "tags": ["Smartphone", "Birne"],
@@ -8,7 +8,7 @@
     "image": "phone-a.svg"
   },
   {
-    "ID": 2,
+    "id": 2,
     "title": "Preiswertes Smartphone der Marke Kimchi",
     "description": "Das Design ist schlicht. Es kann alles was man braucht und bekommt \u00fcber lange Zeit Softwareupdates.",
     "tags": ["Smartphone"],
@@ -16,7 +16,7 @@
     "image": "phone-b.svg"
   },
   {
-    "ID": 3,
+    "id": 3,
     "title": "Grafikkarte f\u00fcr Multi Media",
     "description": "Die Grafikkarte hat 1GB DDR3 und kann schon Farbe. F\u00fcrs Gaming fast nicht zu gebrauchen.",
     "tags": ["GPU"],
@@ -24,7 +24,7 @@
     "image": "gpu-a.svg"
   },
   {
-    "ID": 4,
+    "id": 4,
     "title": "Die neuste Grafikkarte mit 8 GB GDDR6 f\u00fcr Gamer",
     "description": "Die Grafikkarte unterstützt alle neuen Features. Die karte liefer gute Bilder für anspruchsvolle Gamer.",
     "tags": ["GPU"],
@@ -32,7 +32,7 @@
     "image": "gpu-b.svg"
   },
   {
-    "ID": 5,
+    "id": 5,
     "title": "Arbeitsspeicher 8 GB DDR4",
     "description": "Arbeitsspeicher 8 GB DDR4; Latenzen: 19-19-19-39; Spannung 1.35 V",
     "tags": ["RAM", "8GB"],
@@ -40,7 +40,7 @@
     "image": "ram-a.svg"
   },
   {
-    "ID": 6,
+    "id": 6,
     "title": "Arbeitsspeicher 8 GB DDR4 mit rotem K\u00fchlk\u00f6rper",
     "description": "Arbeitsspeicher 8 GB DDR4; Latenzen: 16-18-18-36; Spannung 1.35 V",
     "tags": ["RAM", "8GB"],
