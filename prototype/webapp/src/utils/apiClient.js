@@ -44,7 +44,7 @@ class ApiClient {
     return fetch(`${ApiClient.baseUrl}/orders`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${this.jwt}`
+        Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined
       }
     });
   }

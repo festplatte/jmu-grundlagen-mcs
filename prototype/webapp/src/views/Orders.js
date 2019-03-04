@@ -7,12 +7,20 @@ class Orders extends React.Component {
     orders: []
   };
 
-  componentDidMount = () => {
+  updateOrders = () => {
     apiClient.getOrders().then(res => {
       if (res.status === 200) {
         res.json().then(orders => this.setState({ orders }));
       }
     });
+  };
+
+  componentDidMount = () => {
+    this.updateOrders();
+  };
+
+  componentWillReceiveProps = nextProps => {
+    this.updateOrders();
   };
 
   render() {

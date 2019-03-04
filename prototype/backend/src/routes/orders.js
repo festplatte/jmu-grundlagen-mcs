@@ -7,6 +7,7 @@ const hash = require("../utils/hash");
 module.exports = {
   placeOrder: (req, res, next) => {
     const order = req.body;
+    order.date = new Date();
 
     db(function(dbo, db) {
       dbo.collection("orders").insertOne(order, function(err, result) {
