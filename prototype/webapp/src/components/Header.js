@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -24,7 +25,9 @@ const styles = theme => ({
     position: "relative"
   },
   toolbarTitle: {
-    flex: 1
+    color: "#e40514",
+    textDecoration: "none",
+    fontWeight: "bold"
   },
   grow: {
     flexGrow: 1
@@ -62,11 +65,8 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
     paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 200
-    }
+    background: theme.palette.common.white
   }
 });
 
@@ -80,11 +80,10 @@ class Header extends React.Component {
     isMenuOpen: false
   };
 
-  onSearch = () => {
-    console.log("onSearch called");
-    this.props.history.push(
-      "/search?s=" + document.getElementById("searchbar").value
-    );
+  onSearch = e => {
+    if (e.keyCode === 13) {
+      this.props.history.push("/search?s=" + e.target.value);
+    }
   };
 
   handleMenu = e => {
@@ -106,8 +105,8 @@ class Header extends React.Component {
       <header>
         <CssBaseline />
         <AppBar color="default" position="static" className={classes.appBar}>
-          <Toolbar variant="dense">
-            <Link to="/">
+          <Toolbar variant="regular">
+            <Link to="/" className={classes.toolbarTitle}>
               <Hidden smDown>
                 <Typography
                   variant="h6"
@@ -122,7 +121,7 @@ class Header extends React.Component {
                 <Home />
               </Hidden>
             </Link>
-            <div className={classes.search}>
+            <div className={classNames(classes.search, classes.grow)}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -133,13 +132,9 @@ class Header extends React.Component {
                   input: classes.inputInput
                 }}
                 id="searchbar"
-                onChange={this.onSearch}
+                onKeyUp={this.onSearch}
               />
             </div>
-            <div className={classes.grow} />
-            <Button component={Link} to="/product?id=1">
-              Demo Produktseite
-            </Button>
             <Button component={Link} to="/cart">
               <Badge badgeContent={this.props.cart.length} color="secondary">
                 <ShoppingCart />

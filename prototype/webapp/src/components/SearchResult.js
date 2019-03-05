@@ -19,14 +19,20 @@ class SearchResult extends React.Component {
       <Grid item xs={12}>
         <Paper elevation={1}>
           <Grid container spacing={16}>
-            <Grid item xs={2} component={Link} to={"/product?id=" + product.id}>
+            <Grid
+              item
+              sm={2}
+              xs={12}
+              component={Link}
+              to={"/product?id=" + product.id}
+            >
               <img
                 src={process.env.PUBLIC_URL + "/produktbilder/" + product.image}
                 alt="Produktbild"
                 width="100%"
               />
             </Grid>
-            <Grid item xs={6} to={"/product?id=" + product.id}>
+            <Grid item sm={6} xs={12} to={"/product?id=" + product.id}>
               <Typography variant="h5" gutterBottom>
                 {product.title}
               </Typography>
@@ -34,7 +40,7 @@ class SearchResult extends React.Component {
                 {product.description}
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <Typography variant="h5" gutterBottom className="pricetag">
                 {product.price
                   .toFixed(2)

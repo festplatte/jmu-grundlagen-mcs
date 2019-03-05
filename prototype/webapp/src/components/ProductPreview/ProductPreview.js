@@ -20,14 +20,14 @@ class ProductPreview extends React.Component {
           {product.title}
         </Typography>
         <Grid container spacing={16}>
-          <Grid item xs={4}>
+          <Grid item sm={4} xs={12}>
             <img
               src={process.env.PUBLIC_URL + "/produktbilder/" + product.image}
               alt="Produktbild"
               width="100%"
             />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item sm={8} xs={12}>
             <Typography variant="body1" gutterBottom>
               {product.description}
             </Typography>
