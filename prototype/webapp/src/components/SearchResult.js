@@ -55,13 +55,23 @@ class SearchResult extends React.Component {
               </Typography>
               <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 onClick={this.props.onAddToCart}
               >
                 In den Einkaufswagen
                 <ArrowRight />
                 <ShoppingCart />
               </Button>
+              {this.props.onDirectOrder && (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.props.onDirectOrder}
+                >
+                  Direkt bestellen
+                  <ArrowRight />
+                </Button>
+              )}
             </Grid>
           </Grid>
         </Paper>
