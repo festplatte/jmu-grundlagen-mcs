@@ -208,6 +208,7 @@ class Register extends React.Component {
               Zahlungsinformationen
             </Typography>
             <PaymentForm />
+            <p>* Pflichtfeld</p>
             <Button
               type="submit"
               fullWidth

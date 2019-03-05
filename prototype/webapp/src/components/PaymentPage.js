@@ -10,6 +10,7 @@ class PaymentPage extends React.Component {
           Zahlungsdetails
         </Typography>
         <PaymentForm />
+        <p>* Pflichtfeld</p>
       </>
     );
   }

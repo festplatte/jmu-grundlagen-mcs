@@ -91,6 +91,7 @@ function AddressPage() {
           </FormControl>
         </Grid>
       </Grid>
+      <p>* Pflichtfeld</p>
     </React.Fragment>
   );
 }
