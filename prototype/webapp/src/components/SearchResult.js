@@ -5,7 +5,8 @@ import ArrowRight from "@material-ui/icons/ArrowRight";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-import { Link, withRouter } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 class SearchResult extends React.Component {
   static propTypes = {
@@ -26,18 +27,26 @@ class SearchResult extends React.Component {
               />
             </Grid>
             <Grid item xs={6} to={"/product?id=" + product.id}>
-              <h4>{product.title}</h4>
-              <p>{product.description}</p>
+              <Typography variant="h5" gutterBottom>
+                {product.title}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                {product.description}
+              </Typography>
             </Grid>
             <Grid item xs={4}>
-              <h2 className="pricetag">
+              <Typography variant="h5" gutterBottom className="pricetag">
                 {product.price
                   .toFixed(2)
                   .toString()
                   .replace(".", ",") + " €"}
-              </h2>
-              <p>zzgl. Versand ab 4,95 €</p>
-              <h3 className="availability">Auf Lager</h3>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                zzgl. Versand ab 4,95 €
+              </Typography>
+              <Typography variant="h5" gutterBottom className="availability">
+                Auf Lager
+              </Typography>
               <Button
                 variant="contained"
                 color="secondary"

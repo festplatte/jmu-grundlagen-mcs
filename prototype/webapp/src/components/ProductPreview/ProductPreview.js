@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import ArrowRight from "@material-ui/icons/ArrowRight";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 
 class ProductPreview extends React.Component {
@@ -15,7 +16,9 @@ class ProductPreview extends React.Component {
     const { product } = this.props;
     return (
       <div className="product-preview">
-        <h3>{product.title}</h3>
+        <Typography variant="h5" gutterBottom>
+          {product.title}
+        </Typography>
         <Grid container spacing={16}>
           <Grid item xs={4}>
             <img
@@ -25,15 +28,21 @@ class ProductPreview extends React.Component {
             />
           </Grid>
           <Grid item xs={8}>
-            <p>{product.description}</p>
-            <h2 className="pricetag">
+            <Typography variant="body1" gutterBottom>
+              {product.description}
+            </Typography>
+            <Typography variant="h4" gutterBottom className="pricetag">
               {product.price
                 .toFixed(2)
                 .toString()
                 .replace(".", ",") + " €"}
-            </h2>
-            <p>zzgl. Versand ab 4,95 €</p>
-            <h3 className="availability">Auf Lager</h3>
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              zzgl. Versand ab 4,95 €
+            </Typography>
+            <Typography variant="h5" gutterBottom className="pricetag">
+              Auf Lager
+            </Typography>
             <Button
               variant="contained"
               color="secondary"
