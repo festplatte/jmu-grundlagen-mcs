@@ -33,7 +33,7 @@ class ProductPreview extends React.Component {
                 .replace(".", ",") + " €"}
             </h2>
             <p>zzgl. Versand ab 4,95 €</p>
-            <h3 class="availability">Auf Lager</h3>
+            <h3 className="availability">Auf Lager</h3>
             <Button
               variant="contained"
               color="secondary"

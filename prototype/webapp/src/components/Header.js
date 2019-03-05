@@ -134,7 +134,7 @@ class Header extends React.Component {
               />
             </div>
             <div className={classes.grow} />
-            <Button component={Link} to="/product">
+            <Button component={Link} to="/product?id=1">
               Demo Produktseite
             </Button>
             <Button component={Link} to="/cart">
