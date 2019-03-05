@@ -90,7 +90,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="340.70535"
+     inkscape:cx="31.699686"
      inkscape:cy="112.09691"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -98,7 +98,7 @@
      units="px"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     inkscape:window-x="1912"
+     inkscape:window-x="3832"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      objecttolerance="2" />
@@ -110,7 +110,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -138,18 +138,17 @@
        y="174.23332"
        rx="0"
        ry="0" />
-    <text
-       xml:space="preserve"
+    <g
+       aria-label="2"
+       transform="scale(0.84932859,1.1774006)"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:125.79891968px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:Calibri;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3177);fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="52.0378"
-       y="237.54233"
-       id="text3169"
-       transform="scale(0.84932859,1.1774006)"><tspan
-         sodipodi:role="line"
-         id="tspan3167"
-         x="52.0378"
-         y="237.54233"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic';fill:url(#linearGradient3177);fill-opacity:1;stroke-width:0.26458332">2</tspan></text>
+       id="text3169">
+      <path
+         d="m 60.391634,180.53969 q 0,-15.23346 7.862433,-23.09589 6.388226,-6.38823 15.233463,-6.38823 10.810844,0 17.19907,6.38823 6.38823,6.38822 6.38823,15.72486 0,11.79365 -7.371033,20.63889 -6.879629,8.35383 -14.250659,16.21626 -3.931216,4.42262 -7.862433,8.84524 -3.439814,3.93122 -5.896824,7.86243 h 36.855149 v 9.33664 H 58.426026 v -8.35383 q 0.982804,-4.91402 8.353835,-13.75926 12.28505,-13.26785 20.147483,-22.11309 8.353834,-8.84524 8.353834,-18.67328 0,-5.89682 -3.931216,-9.82804 -2.948412,-2.94841 -7.37103,-2.94841 -3.931216,0 -6.879629,2.94841 -5.405422,5.40542 -5.405422,17.19907 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic';fill:url(#linearGradient3177);fill-opacity:1;stroke-width:0.26458332"
+         id="path834"
+         inkscape:connector-curvature="0" />
+    </g>
     <rect
        style="opacity:1;fill:#313131;fill-opacity:1;stroke:#7c7c7c;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3179"
