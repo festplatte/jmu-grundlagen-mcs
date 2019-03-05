@@ -22,7 +22,7 @@ class Product extends React.Component {
         />
       );
     } else {
-      return <p>Product not found</p>;
+      return <p>Produkt konnte nicht gefunden werden.</p>;
     }
   }
 

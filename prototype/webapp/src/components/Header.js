@@ -82,7 +82,9 @@ class Header extends React.Component {
 
   onSearch = () => {
     console.log("onSearch called");
-    this.props.history.push("/search");
+    this.props.history.push(
+      "/search?s=" + document.getElementById("searchbar").value
+    );
   };
 
   handleMenu = e => {
@@ -130,6 +132,7 @@ class Header extends React.Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
+                id="searchbar"
                 onChange={this.onSearch}
               />
             </div>
