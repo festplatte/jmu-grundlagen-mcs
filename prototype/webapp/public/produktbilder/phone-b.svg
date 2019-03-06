@@ -51,16 +51,6 @@
        inkscape:vp_z="132.29166 : 66.145835 : 1"
        inkscape:persp3d-origin="66.14583 : 44.097223 : 1"
        id="perspective3137" />
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter2642">
-      <feBlend
-         inkscape:collect="always"
-         mode="darken"
-         in2="BackgroundImage"
-         id="feBlend2644" />
-    </filter>
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3163"
@@ -119,7 +109,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-164.70832)"
-     style="opacity:1;filter:url(#filter2642)">
+     style="opacity:1">
     <rect
        style="opacity:1;fill:#1e1e1e;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3153"

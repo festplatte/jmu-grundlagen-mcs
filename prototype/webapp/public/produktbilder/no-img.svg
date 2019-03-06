@@ -17,19 +17,6 @@
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="no-img.svg"
    enable-background="new">
-  <defs
-     id="defs2">
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter2642">
-      <feBlend
-         inkscape:collect="always"
-         mode="darken"
-         in2="BackgroundImage"
-         id="feBlend2644" />
-    </filter>
-  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -67,7 +54,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-164.70832)"
-     style="opacity:1;filter:url(#filter2642)">
+     style="opacity:1">
     <path
        style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#646464;fill-opacity:0.78431373;fill-rule:nonzero;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        d="m 66.145836,192.12103 c -21.794147,0 -39.495778,17.70163 -39.495778,39.49578 0,21.79414 17.701631,39.49578 39.495778,39.49578 21.794148,0 39.495774,-17.70164 39.495774,-39.49578 0,-21.79415 -17.701626,-39.49578 -39.495774,-39.49578 z m 0,3.17216 c 9.46857,0 18.083483,3.61293 24.545148,9.53583 l -8.049912,8.04991 h -3.727247 l -4.574469,-6.09973 c -0.299565,-0.39935 -0.769644,-0.63439 -1.268865,-0.63443 H 59.640202 c -0.499221,4e-5 -0.9693,0.23508 -1.268865,0.63443 l -4.574469,6.09973 H 39.407554 c -1.097911,0 -2.030839,0.93293 -2.030839,2.03084 v 33.41506 c 0,1.09792 0.932928,2.03117 2.030839,2.03117 h 5.756447 l -5.805628,5.80563 c -5.922915,-6.46167 -9.535826,-15.07624 -9.535826,-24.54482 0,-20.07969 16.24361,-36.32362 36.323289,-36.32362 z m 26.787791,11.7788 c 5.922803,6.46164 9.535823,15.07633 9.535823,24.54482 0,20.07967 -16.243933,36.32329 -36.323614,36.32329 -9.468496,0 -18.082842,-3.61301 -24.54449,-9.53583 l 8.048272,-8.04827 h 43.23319 c 1.097908,0 2.031166,-0.93325 2.031166,-2.03117 v -33.41506 c 0,-1.09791 -0.933258,-2.03084 -2.031166,-2.03084 h -5.756119 z m -32.500302,2.24527 h 11.844044 l 4.560371,6.08071 c 0.297275,0.40711 0.770683,0.65099 1.274774,0.65312 v 0 h 1.356407 l -5.550545,5.55055 c -2.150138,-1.67338 -4.847442,-2.67445 -7.772532,-2.67445 -6.989384,0 -12.689298,5.70023 -12.689298,12.68962 0,2.92512 1.001045,5.62206 2.674451,7.77221 l -7.794499,7.7945 h -7.787622 v -31.13243 h 14.036525 v 0 c 0.508597,0.002 0.987627,-0.24238 1.287561,-0.65313 z m 23.521202,6.73383 h 7.786958 v 31.13242 h -38.91938 l 5.551527,-5.55153 c 2.15014,1.67338 4.847116,2.67413 7.772204,2.67413 6.989386,0 12.689627,-5.69992 12.689627,-12.6893 0,-2.925 -1.001169,-5.6221 -2.674451,-7.77221 l 1.481653,-1.48165 c 0.419659,2.01207 2.221062,3.54593 4.348893,3.54593 2.434072,0 4.441353,-2.00728 4.441353,-4.44135 0,-2.12783 -1.533868,-3.92923 -3.545934,-4.34889 z m -1.962969,4.14758 c 0.719605,0 1.268865,0.54926 1.268864,1.26886 0,0.71961 -0.549259,1.26919 -1.268864,1.26919 -0.719605,0 -1.268864,-0.54958 -1.268864,-1.26919 0,-0.7196 0.549259,-1.26886 1.268864,-1.26886 z m -15.845722,1.901 c 2.062006,0 3.964733,0.65033 5.519396,1.7551 l -13.281108,13.28111 c -1.10475,-1.55466 -1.755426,-3.45708 -1.755426,-5.51907 0,-5.27492 4.242223,-9.51714 9.517138,-9.51714 z m 7.762039,3.99807 c 1.104672,1.55462 1.755099,3.45716 1.755099,5.51907 0,5.27491 -4.242221,9.51714 -9.517138,9.51714 -2.061922,0 -3.964438,-0.65042 -5.519067,-1.7551 z"
