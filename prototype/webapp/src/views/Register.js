@@ -75,7 +75,7 @@ class Register extends React.Component {
       statusbar = (
         <StatusSnackbar
           variant="success"
-          message="Ihre Anmeldung war erfolgreich. Sie können sich nun einloggen."
+          message="Ihre Registrierung war erfolgreich. Sie können sich nun einloggen."
           onClose={this.closeStatusbar}
         />
       );

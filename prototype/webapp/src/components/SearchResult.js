@@ -7,14 +7,22 @@ import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core";
+
+const styles = theme => ({
+  productLink: {
+    textDecoration: "none"
+  }
+});
 
 class SearchResult extends React.Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
     onAddToCart: PropTypes.func
   };
   render() {
-    const { product } = this.props;
+    const { product, classes } = this.props;
     return (
       <Grid item xs={12}>
         <Paper elevation={1}>
@@ -32,7 +40,14 @@ class SearchResult extends React.Component {
                 width="100%"
               />
             </Grid>
-            <Grid item sm={6} xs={12} to={"/product?id=" + product.id}>
+            <Grid
+              item
+              sm={6}
+              xs={12}
+              component={Link}
+              to={"/product?id=" + product.id}
+              className={classes.productLink}
+            >
               <Typography variant="h5" gutterBottom>
                 {product.title}
               </Typography>
@@ -80,4 +95,4 @@ class SearchResult extends React.Component {
   }
 }
 
-export default SearchResult;
+export default withStyles(styles)(SearchResult);

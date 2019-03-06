@@ -40,12 +40,12 @@ class ProductPreview extends React.Component {
             <Typography variant="body1" gutterBottom>
               zzgl. Versand ab 4,95 €
             </Typography>
-            <Typography variant="h5" gutterBottom className="pricetag">
+            <Typography variant="h5" gutterBottom className="availability">
               Auf Lager
             </Typography>
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={this.props.onAddToCart}
             >
               In den Einkaufswagen

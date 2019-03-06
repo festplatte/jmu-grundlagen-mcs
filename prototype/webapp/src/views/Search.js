@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Snackbar } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Snackbar, withStyles } from "@material-ui/core";
 import StatusSnackbar from "../components/StatusSnackbar";
 import products from "../produkte";
 import queryString from "query-string";
@@ -15,6 +16,12 @@ import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Grid from "@material-ui/core/Grid";
 import { addToCart } from "../redux/actions/cartActions";
 import apiClient from "../utils/apiClient";
+
+const styles = theme => ({
+  button: {
+    marginLeft: theme.spacing.unit
+  }
+});
 
 class Search extends React.Component {
   state = {
@@ -39,7 +46,7 @@ class Search extends React.Component {
         <SearchResult
           key={i}
           product={product}
-          onAddToCart={() => this.props.addToCart(product)}
+          onAddToCart={() => this.handleAddToCart(product)}
           onDirectOrder={
             this.props.user && this.props.user.email
               ? () => this.openDialog(product)
@@ -48,7 +55,11 @@ class Search extends React.Component {
         />
       ));
     } else {
-      return <p>Produkt konnte nicht gefunden werden.</p>;
+      return (
+        <Grid item xs={12}>
+          Produkt konnte nicht gefunden werden.
+        </Grid>
+      );
     }
   }
 
@@ -77,6 +88,28 @@ class Search extends React.Component {
     this.closeDialog();
   };
 
+  handleAddToCart = product => {
+    const { classes } = this.props;
+    this.props.addToCart(product);
+    this.setState({
+      statusbarOpen: true,
+      statusbarMsg: (
+        <>
+          Produkt zum Warenkorb hinzugefügt.{" "}
+          <Button
+            component={Link}
+            to="/cart"
+            variant="contained"
+            className={classes.button}
+          >
+            zum Warenkorb
+          </Button>
+        </>
+      ),
+      statusbarVariant: "success"
+    });
+  };
+
   closeStatusbar = () => {
     this.setState({
       statusbarOpen: false
@@ -100,6 +133,9 @@ class Search extends React.Component {
     return (
       <React.Fragment>
         <h1>Suchergebnisse</h1>
+        <p>
+          Ihre Suche: <b>{queryString.parse(this.props.location.search).s}</b>
+        </p>
         <Snackbar open={this.state.statusbarOpen} onClose={this.closeStatusbar}>
           <StatusSnackbar
             variant={this.state.statusbarVariant}
@@ -144,4 +180,4 @@ export default connect(
     user: state.auth.user
   }),
   { addToCart }
-)(withMobileDialog()(Search));
+)(withMobileDialog()(withStyles(styles)(Search)));

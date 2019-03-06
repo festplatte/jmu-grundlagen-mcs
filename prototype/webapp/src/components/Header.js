@@ -136,7 +136,13 @@ class Header extends React.Component {
               />
             </div>
             <Button component={Link} to="/cart">
-              <Badge badgeContent={this.props.cart.length} color="secondary">
+              <Badge
+                badgeContent={this.props.cart.reduce(
+                  (acc, x) => acc + x.amount,
+                  0
+                )}
+                color="secondary"
+              >
                 <ShoppingCart />
               </Badge>
               <Hidden smDown>Warenkorb</Hidden>
@@ -174,6 +180,7 @@ class Header extends React.Component {
                   >
                     Meine Bestellungen
                   </MenuItem>
+                  <MenuItem onClick={this.handleMenu}>Meine Daten</MenuItem>
                   <MenuItem onClick={this.handleLogout}>Abmelden</MenuItem>
                 </Menu>
               </>
