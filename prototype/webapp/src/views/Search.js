@@ -16,6 +16,7 @@ import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Grid from "@material-ui/core/Grid";
 import { addToCart } from "../redux/actions/cartActions";
 import apiClient from "../utils/apiClient";
+import ProductFilter from "../components/ProductFilter";
 
 const styles = theme => ({
   button: {
@@ -168,7 +169,14 @@ class Search extends React.Component {
           </DialogActions>
         </Dialog>
         <Grid container spacing={24}>
-          {this.getSearchResults()}
+          <Grid item md={3} xs={12}>
+            <ProductFilter />
+          </Grid>
+          <Grid item md={9} xs={12}>
+            <Grid container spacing={24}>
+              {this.getSearchResults()}
+            </Grid>
+          </Grid>
         </Grid>
       </React.Fragment>
     );

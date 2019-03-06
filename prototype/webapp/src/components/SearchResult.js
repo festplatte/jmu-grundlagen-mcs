@@ -12,6 +12,9 @@ import { withStyles } from "@material-ui/core";
 const styles = theme => ({
   productLink: {
     textDecoration: "none"
+  },
+  paper: {
+    padding: theme.spacing.unit
   }
 });
 
@@ -25,7 +28,7 @@ class SearchResult extends React.Component {
     const { product, classes } = this.props;
     return (
       <Grid item xs={12}>
-        <Paper elevation={1}>
+        <Paper elevation={1} className={classes.paper}>
           <Grid container spacing={16}>
             <Grid
               item
