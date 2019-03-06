@@ -1,7 +1,8 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  DECREASE_PRODUCT_AMOUNT
+  DECREASE_PRODUCT_AMOUNT,
+  CLEAR_CART
 } from "../actions/types";
 
 const initialState = {
@@ -39,6 +40,11 @@ export default function(state = initialState, action) {
             amount: x.id === action.payload.id ? x.amount - 1 : x.amount
           }))
           .filter(x => x.amount > 0)
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cart: []
       };
     default:
       return state;

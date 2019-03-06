@@ -13,6 +13,7 @@ import PaymentPage from "../components/PaymentPage";
 import Review from "../components/Review";
 import apiClient from "../utils/apiClient";
 import { signIn } from "../redux/actions/authActions";
+import { clearCart } from "../redux/actions/cartActions";
 import { Snackbar } from "@material-ui/core";
 import StatusSnackbar from "../components/StatusSnackbar";
 import ConfirmOrder from "../components/ConfirmOrder";
@@ -99,6 +100,7 @@ class Checkout extends React.Component {
       const order = { user, products };
       apiClient.placeOrder(order).then(res => {
         if (res.status === 201) {
+          this.props.clearCart();
           this.handleNext();
         } else {
           this.setState({
@@ -108,6 +110,7 @@ class Checkout extends React.Component {
         }
       });
     } else {
+      this.props.clearCart();
       this.handleNext();
     }
   };
@@ -218,5 +221,5 @@ export default connect(
     products: state.cart.cart,
     user: state.auth.user
   }),
-  { signIn }
+  { signIn, clearCart }
 )(withStyles(styles)(Checkout));
