@@ -9,7 +9,7 @@ Der Prototyp basiert auf einem REST-Backend mit Datenbankanbindung in JavaScript
 
 ## Build und Ausführen
 
-Zum Ausführen der gesamten Anwendung wird [Docker](https://www.docker.com/get-started) benötigt. Für den ersten Start sind folgende Schritte zur Vorbereitung nötig:
+Zum Ausführen der gesamten Anwendung wird [Docker](https://www.docker.com/get-started) benötigt. Nur für den ersten Start sind folgende Schritte zum Einrichten der Datenbank notwendig, die [Node.js](https://nodejs.org/en/) erfordern:
 
 - Starten von mongodb: `docker-compose up mongodb`
 - Initialisieren von mongodb (Anlegen der Datenbank und Collections): `cd backend`, `npm install`, `npm run setup-db`
