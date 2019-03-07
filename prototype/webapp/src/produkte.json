@@ -6,7 +6,13 @@
     "tags": ["Smartphone", "Birne"],
     "price": 999.9,
     "image": "phone-a.svg",
-    "rating": 5
+    "rating": 5,
+    "features": [
+      { "Farbe": "schwarz" },
+      { "Speicher": "64 GB" },
+      { "Kamera": "12 Megapixel" },
+      { "Display": "6 Zoll" }
+    ]
   },
   {
     "id": 2,
@@ -15,7 +21,13 @@
     "tags": ["Smartphone"],
     "price": 362.85,
     "image": "phone-b.svg",
-    "rating": 5
+    "rating": 5,
+    "features": [
+      { "Farbe": "schwarz" },
+      { "Speicher": "32 GB" },
+      { "Kamera": "13 Megapixel" },
+      { "Display": "5,5 Zoll" }
+    ]
   },
   {
     "id": 3,
@@ -24,7 +36,13 @@
     "tags": ["GPU"],
     "price": 127.64,
     "image": "gpu-a.svg",
-    "rating": 2
+    "rating": 2,
+    "features": [
+      { "Shadereinheiten": "192" },
+      { "Grafikspeicher": "1 GB DDR3" },
+      { "Anschlüsse": "DVI-I, HDMI, DisplayPort" },
+      { "Schnittstelle": "PCI-Express 2.0 x16" }
+    ]
   },
   {
     "id": 4,
@@ -33,7 +51,13 @@
     "tags": ["GPU"],
     "price": 615.99,
     "image": "gpu-b.svg",
-    "rating": 4
+    "rating": 4,
+    "features": [
+      { "Shadereinheiten": "2880" },
+      { "Grafikspeicher": "8 GB GDDR6" },
+      { "Anschlüsse": "DVI-D, HDMI, 2x DisplayPort" },
+      { "Schnittstelle": "PCI-Express 3.0 x16" }
+    ]
   },
   {
     "id": 5,
@@ -42,7 +66,14 @@
     "tags": ["RAM", "8GB"],
     "price": 58.81,
     "image": "ram-a.svg",
-    "rating": 3
+    "rating": 3,
+    "features": [
+      { "Speichertyp": "DDR4" },
+      { "Speichermenge": "8 GB" },
+      { "Anzahl der Module": 1 },
+      { "Latenzen": "19-19-19-39" },
+      { "Spannung": "1.35 V" }
+    ]
   },
   {
     "id": 6,
@@ -51,6 +82,14 @@
     "tags": ["RAM", "8GB"],
     "price": 61.99,
     "image": "ram-b.svg",
-    "rating": 4
+    "rating": 4,
+    "features": [
+      { "Speichertyp": "DDR4" },
+      { "Speichermenge": "8 GB" },
+      { "Anzahl der Module": 1 },
+      { "Latenzen": "16-18-18-36" },
+      { "Spannung": "1.35 V" },
+      { "Farbe": "rot" }
+    ]
   }
 ]

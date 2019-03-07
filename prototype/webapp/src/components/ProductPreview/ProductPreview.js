@@ -9,6 +9,11 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import "./ProductPreview.scss";
 import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   iconYellow: {
@@ -49,6 +54,22 @@ class ProductPreview extends React.Component {
     return ret;
   }
 
+  getFeatureTable(product) {
+    var ret;
+    product.features.forEach(element => {
+      ret = (
+        <>
+          {ret}
+          <TableRow>
+            <TableCell align="right">{Object.keys(element)[0]}</TableCell>
+            <TableCell align="left">{Object.values(element)[0]}</TableCell>
+          </TableRow>
+        </>
+      );
+    });
+    return ret;
+  }
+
   render() {
     const { product } = this.props;
     return (
@@ -56,7 +77,7 @@ class ProductPreview extends React.Component {
         <Typography variant="h5" gutterBottom>
           {product.title}
         </Typography>
-        <Grid container spacing={16}>
+        <Grid container spacing={16} alignItems="center" justify="center">
           <Grid item sm={4} xs={12}>
             <img
               src={process.env.PUBLIC_URL + "/produktbilder/" + product.image}
@@ -95,6 +116,13 @@ class ProductPreview extends React.Component {
               {this.getReviewRating(this.props, product)} | 1 Bewertung | Jetzt
               bewerten
             </Typography>
+          </Grid>
+          <Grid item md={6} sm={8} xs={12}>
+            <Paper elevation={1}>
+              <Table>
+                <TableBody>{this.getFeatureTable(product)}</TableBody>
+              </Table>
+            </Paper>
           </Grid>
         </Grid>
       </div>

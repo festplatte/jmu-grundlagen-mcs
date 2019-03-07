@@ -12,8 +12,6 @@ class Product extends React.Component {
         parseInt(product.id, 10) ===
         parseInt(queryString.parse(this.props.location.search).id, 10)
     );
-    console.log(result);
-    console.log(queryString.parse(this.props.location.search));
     if (result != null) {
       return (
         <ProductPreview
