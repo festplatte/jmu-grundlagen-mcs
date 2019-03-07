@@ -245,32 +245,32 @@ Institut für Informatik\newline{Mensch-Computer Interaktion}}&
 %%%% Zusammenfassung %%%%
 
 % obligatorisch bei Abschlussarbeiten
-\renewcommand{\theabstractfirst}{deutsche Zusammenfassung - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+%\renewcommand{\theabstractfirst}{deutsche Zusammenfassung - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet}
+%Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet}
 
 %%%% Titelei %%%%
 
 \frontmatter%bei scrreprt auskommentieren
-\begin{spacing}{1}
+\begin{spacing}{0}
 
 % Titelseite
 \printthetitlepage
 \end{spacing}
 
 % Zusammenfassung (obligatorisch bei Abschlussarbeiten)
-\printtheabstract{Zusammenfassung} 	%\printtheabstract{titlefirst} nur \abstractfirst mit Titel 'fitlefirst'
+%\printtheabstract{Zusammenfassung} 	%\printtheabstract{titlefirst} nur %\abstractfirst mit Titel 'fitlefirst'
 
-\begin{spacing}{1}
+\begin{spacing}{0}
 
 % Inhaltsverzeichnis
 \tableofcontents 	
 
 % Abbildungsverzeichnis  (optional)
-\listoffigures 		
+%\listoffigures 		
 
 % Tabellenverzeichnis (optional)
-\listoftables		
+%\listoftables		
 
 % Abkürzungsverzeichnis
 % You have to run:
@@ -290,7 +290,6 @@ Die Evaluation wird mittels der Cognitive Walkthrough Methode durchgeführt. Bei
 
 \chapter{Methodik}
 Die Methode Cognitive Walkthrough wird dazu verwendet um das Design einer Benutzeroberfläche zu beurteilen. Die Methode kann sowohl von den Entwicklern des Designs, als auch von Experten durchgeführt werden. Diese Methode hat den Vorteil, dass für die Durchführung keine Versuchspersonen benötigt werden. Der Cognitive Walkthrough kann sowohl zum Bewerten von Prototypen, als auch von fertigen Systemen verwendet werden. Vor allem beim Testen eines Prototypen können Bedienprobleme rechtzeitig erkannt und kostengünstig verbessert werden. Bei einem fertigen System hingegen sind späte Änderungen der Benutzeroberfläche meist viel aufwändiger und teurer. Zur Vorbereitung werden potentielle Nutzergruppen erstellt, so wie deren Vorwissen ermittelt. Für diese Nutzergruppen werden Aufgaben mit konkreten Zielen erstellt, die diese mithilfe des zu evaluierenden Systems erreichen sollen. Bei der Durchführung der Methode führt der Entwickler bzw. der Experte folgende Schritte durch: Zuerst wird die Benutzeroberfläche aus der Sichtweise eines Nutzers aus der definierten Gruppe betrachtet und nach verfügbaren Aktionen durchsucht. Danach wird die Aktion gewählt und ausgeführt die aus Sicht des Nutzers am wahrscheinlichsten zum Ziel führt. Nach der Aktion wird das Interface überprüft ob das System Feedback gibt oder es Hinweise für Fortschritt gibt. Diese Schritte werden wiederholt bis entweder das Ziel erreicht wird oder der Test abgebrochen werden muss. Während dieser Schritte achtet der Entwickler bzw. der Experte darauf ob die richtigen Aktionen gewählt wurden und ob Probleme auftreten. Alle gefundenen Bedienprobleme können durch eine Verbesserung des Designs der Benutzeroberfläche behoben werden. Mit dem neuen Design kann die Methode erneut ausgeführt werden und das Design weiter verbessert werden.
-
 
 \chapter{Durchführung}
 \section{Vorbereitung}
@@ -322,8 +321,6 @@ Der Nutzer startet auf der mobilen Version von alternate, wenn alternate.de auf 
 \paragraph{Bestellprozess} Hat der Nutzer ein Produkt zum Warenkorb hinzugefügt, findet er sich auf einer Bestätigungsseite, von der aus er zum Warenkorb gelangt. Dabei zeigt auch das Warenkorbsymbol oben rechts die Anzahl der im Warenkorb vorhandenen Produkte an. Im Warenkorb selbst sieht der Nutzer eine Übersicht der enthaltenen Produkte und deren Preis. Er kann nun direkt über die Zahlungsanbieter \textit{PayPal} oder \textit{masterpass} bestellen und wird dann zur Seite des jeweiligen Anbieters weitergeleitet, ohne ein Kundenkonto zu erstellen. Alternativ gelangt der Kunde über den Button \textit{Zur Kasse} zu einem Anmeldeformular für ein bestehendes Kundenkonto oder der Möglichkeit ein neues zu erstellen. Die Bestellung als Gast ist nur möglich, wenn der Nutzer auf den Link \textit{zur klassischen Ansicht} klickt, wodurch er auf die Startseite des Shops weitergeleitet wird, die nicht für Mobilgeräte optimiert ist. Hier muss auch die Produktauswahl erneut erfolgen, da der Warenkorb nicht übernommen wird. Erstellt der Benutzer über die mobile Seite ein Kundenkonto, muss er sich im Anschluss daran einloggen und kann dann bestellen.
 
 \section{Ergebnisse}
-Welche Probleme sind bei der Analyse aufgetreten?\\
-zwei Absätze -> jeder seine Zusammenfassung
 
 \paragraph{Bestellprozess angemeldet am PC}
 Das Suchfeld kann übersehen werden und sollte daher noch präsenter gestaltet werden.\\
@@ -334,24 +331,14 @@ Die Suche beschränkt sich auf den Namen des Produktes, sodass man nicht immer d
 \paragraph{Bestellprozess als Gast mit Smartphone} Bei der Bestellung per Smartphone wird auf der Startseite bereits die Vielzahl der Kategorien zum Problem. Hier kann der Nutzer leicht die falsche auswählen, weil sich ein gewünschtes Produkt hinter mehreren Hauptkategorien verbergen könnte. Da die Startseite bereits die wichtigsten Kategorien auflistet, ist das ausklappbare Menü redundant und wird vermutlich nicht immer eindeutig gefunden, da das Icon mit den drei Balken abgeschnitten wurde. Werden anschließend die Unterkategorien ausgewählt, stellt sich das auf jeder Seite oben angebrachte Werbebanner als störend heraus, da die für den Nutzer interessanten Inhalte nach unten rücken und somit zum Teil erst nach dem Scrollen sichtbar werden. Die Suchfunktion wird hingegen vermutlich gut gefunden, liefert allerdings nicht immer die erwarteten Suchergebnisse. Auch die Filterfunktionen sind zwar hilfreich, allerdings erscheinen diese teils nicht kontextbezogen und die Filterwerte teils unpassend. Zudem hebt sich die Schrift durch zu niedrigen Kontrast wenig vom Hintergrund ab, was für Personen mit Seheinschränkungen gerade auf Smartphones Schwierigkeiten verursachen kann. Das Abschließen des Bestellprozesses über einen Drittanbieter wie \textit{Paypal} oder \textit{masterpass} ist gut umgesetzt und ermöglicht eine unkomplizierte Bestellung als Gast. Ist der Nutzer allerdings nicht Kunde bei einem der zwei Anbieter, hat er praktisch keine Möglichkeit, als Gast zu bestellen, da das Umschalten auf die PC-Ansicht und das erneute Auswählen der Produkte unzumutbar ist.
 
 \section{Diskussion}
-Wie können die Probleme behoben werden?\\
-- Menü für mobile Seite entfernen da redundant\\
-- Kategorien konsolidieren\\
-- Werbebanner weglassen bzw. unter Kategorieauswahl platzieren\\
-- eine Seite für PC und mobil, die responsive ist -> alle Funktionen (wie Gastbestellung) verfügbar\\
-- "in den Warenkorb" Button direkt auf Produktübersichtsseite\\
-- Kontrast Hintergrund und Schrift bei Filter erhöhen\\
-- weniger, aber relevante Filter\\
-- Suche sollte Tags durchsuchen, nicht nur Produkttitel\\
-Basti
 
 Um das Suchfeld in der Desktop-Version der Seite noch präsenter zu machen kann das Suchfeld vergrößert werden und das Symbol von dem Button durch eine Lupe ersetzt werden. Dadurch wäre die Symbolik deutlicher als mit dem Dreieck.
-Die Suchergebnisse könnten verbessert werden, indem weitere Produkteigenschaften in der Suche berücksichtigt werden, anstatt nur dem Produktnamen. Alternativ könnten Produkten auch Tags zugewiesen werden, sodass wenn ein Tag mit deinem Suchwort übereinstimmt alle Produkte mit diesem Tag angezeigt werden.
-Das überladene Menü mit den Kategorien sollte durch die Reduzierung der Einträge verkleinert werden. Es wäre ratsam sowohl für die Haupteinträge als auch für die untergeordneten Einträge die 7+-2 Regel zu befolgen um dem Nutzer die manuelle Suche zu ersparen. 
-Die Filter sollten übersichtlicher gestaltet werden. Wenn viele Filter vorhanden sind sollten diese zugeklappt sein, mit der Möglichkeit diese aufzuklappen und zu benutzen. Filteroptionen sollten nicht angezeigt werden wenn kein Kontext erkennbar ist. Für den Fall, dass der Filter binär ist wie zum Beispiel \glqq Nur verfügbare anzeigen\grqq{} wäre auch bei der mobilen Variante eine Checkbox zum aktivieren des Filters sinnvoll.
-Filter mit der Einheit MB sollten modernisiert werden und stattdessen in GB angegeben werden.
+Die Suchergebnisse könnten verbessert werden, indem weitere Produkteigenschaften in der Suche berücksichtigt werden würden, anstatt nur dem Produktnamen. Alternativ könnten Produkten auch Tags zugewiesen werden, sodass wenn ein Tag mit deinem Suchwort übereinstimmt alle Produkte mit diesem Tag angezeigt werden.\\
+Das überladene Menü mit den Kategorien sollte durch die Reduzierung der Einträge verkleinert werden. Es wäre ratsam sowohl für die Haupteinträge als auch für die untergeordneten Einträge die 7+-2 Regel zu befolgen um dem Nutzer die manuelle Suche zu ersparen.\\
+Die Filter sollten übersichtlicher gestaltet werden. Wenn viele Filter vorhanden sind sollten diese zugeklappt sein, mit der Möglichkeit diese aufzuklappen und zu benutzen. Filteroptionen sollten nicht angezeigt werden wenn kein Kontext erkennbar ist. Für den Fall, dass der Filter binär ist, wie zum Beispiel \glqq Nur verfügbare anzeigen\grqq{} , wäre auch bei der mobilen Variante eine Checkbox zum aktivieren des Filters sinnvoll.
+Filter mit der Einheit MB sollten modernisiert werden und stattdessen in GB angegeben werden.\\
 Das Doppelte Menü in der mobilen Variante der Website sollte durch ein zentrales Menü ersetzt werden. Auf der Mobilen Seite sollte mit Werbebannern sparsam umgegangen werden da hier weniger Platz verfügbar ist. Zum Beispiel könnte ein einzelner Werbebanner unter der Kategorieauswahl platziert werden.
-Für einen konsistenten Auftritt wäre es gut wenn Alternate eine Website hätte die responsive ist. Dadurch wären die Unterschiede im Design und in der Funktionalität zwischen der Desktop-Variante und der mobilen Variante der Website nicht so groß. Für die mobile Variante wäre ein erhöhter Kontrast zwischen Hintergrund und Schrift angebracht, da es auch mobile Geräte mit kontrastarmen Displays gibt und eine Benutzung unter freiem Himmel mit Sonnenschein möglich sein sollte.
+Für einen konsistenten Auftritt wäre es gut wenn Alternate eine Website hätte die responsive ist. Dadurch wären die Unterschiede im Design und in der Funktionalität zwischen der Desktop-Variante und der mobilen Variante der Website nicht so groß. Für die mobile Variante wäre ein erhöhter Kontrast zwischen Hintergrund und Schrift angebracht, da es auch mobile Geräte mit kontrastarmen Displays gibt und eine Benutzung unter freiem Himmel mit Sonnenschein möglich sein sollte.\\
 Um die Anzahl der Klicks zu reduzieren wäre es gut, wenn es schon bei der Produktliste eine Möglichkeit gäbe ein Produkt direkt in den Einkaufswagen zu legen.
 
 \chapter{Zusammenfassung}
@@ -365,13 +352,13 @@ Durch die Methode des Cognitive Walkthrough konnten für diesen Onlineshop anhan
 %\printbibliography[nottype=online,heading=subbibliography,
 %                   title={Printed Sources}]
 %\printbibliography[type=online,heading=subbibliography,
- %                  title={Online Sources}]
+%                   title={Online Sources}]
 
 \appendix 				% Anhang (optional) Überschriften beginnen mit Anhang ...
 
 \newpage
 \chapter{Authorenverzeichnis}
-Bastian Hedenkamp: Einleitung, Bestellprozess angemeldet am PC\\
+Bastian Hedenkamp: Einleitung, Bestellprozess angemeldet am PC, Ergebnisse, Diskussion \\
 Michael Gabler: Vorbereitung, Bestellprozess als Gast mit Smartphone, Ergebnisse, Prototyp 
 
 
