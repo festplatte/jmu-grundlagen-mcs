@@ -1,0 +1,67 @@
+[
+  {
+    "Computer & Laptop": [
+      "PCs",
+      "Laptops",
+      "PC Komponenten",
+      "Server",
+      "Netzwerk",
+      "Mac",
+      "Software",
+      "Zubehör"
+    ]
+  },
+  {
+    "Smartphone & Tablet": [
+      "Android Smartphones",
+      "iPhones",
+      "Windows Phones",
+      "Android Tablets",
+      "iPads",
+      "Windows Tablets",
+      "Handys"
+    ]
+  },
+  {
+    "Fernseher": [
+      "TVs",
+      "Beamer",
+      "DVD & Blu-ray",
+      "Empfangstechnik",
+      "Kabel & Adapter",
+      "Zubehör"
+    ]
+  },
+  {
+    "Haushalt": [
+      "Küchengeräte",
+      "Reinigen",
+      "Beleuchtung",
+      "Garten",
+      "Sicherheitstechnik",
+      "Stromversorgung",
+      "Heizen & Klima",
+      "Werkzeug"
+    ]
+  },
+  { "Kamera": ["Foto", "Video", "Dronen"] },
+  {
+    "Audio": [
+      "HiFi-Anlagen",
+      "Kopfhörer",
+      "Lautsprecher",
+      "Kabel & Adapter",
+      "Zubehör"
+    ]
+  },
+  {
+    "Spielzeug": [
+      "Spielekonsolen",
+      "Gesellschaftsspiele",
+      "Ferngesteuerte Modelle",
+      "Kinderspielzeug",
+      "Lernspiele"
+    ]
+  },
+  { "Outdoor": ["Zelten & Camping", "Boote", "Wandern", "E-Bikes"] }
+]

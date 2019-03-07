@@ -91,5 +91,37 @@
       { "Spannung": "1.35 V" },
       { "Farbe": "rot" }
     ]
+  },
+  {
+    "id": 7,
+    "title": "Arbeitsspeicher 16 GB DDR4 mit rotem K\u00fchlk\u00f6rper",
+    "description": "Arbeitsspeicher 2x 8 GB DDR4; Latenzen: 16-18-18-36; Spannung 1.35 V",
+    "tags": ["RAM", "16GB"],
+    "price": 110.0,
+    "image": "ram-c.svg",
+    "rating": 4,
+    "features": [
+      { "Speichertyp": "DDR4" },
+      { "Speichermenge": "16 GB" },
+      { "Anzahl der Module": 2 },
+      { "Latenzen": "16-18-18-36" },
+      { "Spannung": "1.35 V" },
+      { "Farbe": "rot" }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Highend Smartphone der Marke Shaoyazi",
+    "description": "Das Design ist irgendwie kopiert. Es kann alles andere scheint besser zu sein.",
+    "tags": ["Smartphone"],
+    "price": 899.99,
+    "image": "phone-c.svg",
+    "rating": 4,
+    "features": [
+      { "Farbe": "schwarz" },
+      { "Speicher": "128 GB" },
+      { "Kamera": "14 Megapixel" },
+      { "Display": "6,2 Zoll" }
+    ]
   }
 ]
