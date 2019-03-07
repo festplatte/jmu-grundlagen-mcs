@@ -1,6 +1,7 @@
 [
   {
-    "Computer & Laptop": [
+    "title": "Computer & Laptop",
+    "subcategories": [
       "PCs",
       "Laptops",
       "PC Komponenten",
@@ -12,7 +13,8 @@
     ]
   },
   {
-    "Smartphone & Tablet": [
+    "title": "Smartphone & Tablet",
+    "subcategories": [
       "Android Smartphones",
       "iPhones",
       "Windows Phones",
@@ -23,7 +25,8 @@
     ]
   },
   {
-    "Fernseher": [
+    "title": "Fernseher",
+    "subcategories": [
       "TVs",
       "Beamer",
       "DVD & Blu-ray",
@@ -33,7 +36,8 @@
     ]
   },
   {
-    "Haushalt": [
+    "title": "Haushalt",
+    "subcategories": [
       "Küchengeräte",
       "Reinigen",
       "Beleuchtung",
@@ -44,9 +48,10 @@
       "Werkzeug"
     ]
   },
-  { "Kamera": ["Foto", "Video", "Dronen"] },
+  { "title": "Kamera", "subcategories": ["Foto", "Video", "Dronen"] },
   {
-    "Audio": [
+    "title": "Audio",
+    "subcategories": [
       "HiFi-Anlagen",
       "Kopfhörer",
       "Lautsprecher",
@@ -55,7 +60,8 @@
     ]
   },
   {
-    "Spielzeug": [
+    "title": "Spielzeug",
+    "subcategories": [
       "Spielekonsolen",
       "Gesellschaftsspiele",
       "Ferngesteuerte Modelle",
@@ -63,5 +69,8 @@
       "Lernspiele"
     ]
   },
-  { "Outdoor": ["Zelten & Camping", "Boote", "Wandern", "E-Bikes"] }
+  {
+    "title": "Outdoor",
+    "subcategories": ["Zelten & Camping", "Boote", "Wandern", "E-Bikes"]
+  }
 ]

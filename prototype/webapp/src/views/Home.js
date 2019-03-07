@@ -1,19 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Grid from "@material-ui/core/Grid";
-import StarIcon from "@material-ui/icons/StarBorder";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import categories from "../kategorien";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   heroContent: {
@@ -42,73 +36,55 @@ class Home extends React.Component {
     classes: PropTypes.object.isRequired
   };
 
-  state = {
-    anchorEl: null
-  };
-
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  getMainCategories(categories, anchorEl) {
-    var ret;
-    categories.forEach(element => {
-      ret = (
-        <>
-          {ret}
-          <Grid item xs={6} sm={3} md={1}>
-            <Button
-              aria-owns={anchorEl ? "simple-menu" : undefined}
-              aria-haspopup="true"
-              onClick={this.handleClick}
-            >
-              {Object.keys(element)[0]}
-            </Button>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-            >
-              {this.getSubCategories(Object.values(element)[0])}
-            </Menu>
-          </Grid>
-        </>
-      );
-    });
-    return ret;
-  }
-
-  getSubCategories(subcategories) {
-    var ret;
-    subcategories.forEach(element => {
-      //console.log(element);
-      ret = (
-        <>
-          {ret}
-          <MenuItem onClick={this.handleClose}>{element}</MenuItem>
-        </>
-      );
-    });
-    return ret;
-  }
-
   render() {
     const { classes } = this.props;
-    const { anchorEl } = this.state;
 
     return (
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Grid container spacing={24} alignItems="flex-end">
-            {this.getMainCategories(categories, anchorEl)}
-          </Grid>
-        </Toolbar>
-      </AppBar>
+      <React.Fragment>
+        {/* Hero unit */}
+        <div className={classes.heroContent}>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            Alternate.de
+          </Typography>
+          <Typography
+            variant="h6"
+            align="center"
+            color="textSecondary"
+            component="p"
+          >
+            Ihr Onlineshop für Hardware, Software und Outdoorprodukte.
+          </Typography>
+        </div>
+        {/* End hero unit */}
+        <Grid container spacing={40} alignItems="flex-end">
+          {categories.map(cat => (
+            // Enterprise card is full width at sm breakpoint
+            <Grid item key={cat.title} xs={12} sm={6} md={4}>
+              <Card>
+                <CardHeader
+                  title={cat.title}
+                  titleTypographyProps={{ align: "center" }}
+                  subheaderTypographyProps={{ align: "center" }}
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  {cat.subcategories.map(subcat => (
+                    <Typography variant="subtitle1" align="center" key={subcat}>
+                      <Link to={`/search?c=${subcat}`}>{subcat}</Link>
+                    </Typography>
+                  ))}
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </React.Fragment>
     );
   }
 }
