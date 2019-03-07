@@ -1,17 +1,54 @@
 import React from "react";
-import "./ProductPreview.scss";
 import Grid from "@material-ui/core/Grid";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import ArrowRight from "@material-ui/icons/ArrowRight";
+import Grade from "@material-ui/icons/Grade";
+import GradeOutlined from "@material-ui/icons/GradeOutlined";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import "./ProductPreview.scss";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  iconYellow: {
+    color: "#ffdd00"
+  },
+  iconGray: {
+    color: "#bababa"
+  }
+});
 
 class ProductPreview extends React.Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
     onAddToCart: PropTypes.func
   };
+
+  getReviewRating(props, product) {
+    const { classes } = props;
+    var i;
+    var ret;
+    for (i = 1; i <= 5; i++) {
+      if (i <= product.rating) {
+        ret = (
+          <>
+            {ret}
+            <Grade className={classes.iconYellow} />
+          </>
+        );
+      } else {
+        ret = (
+          <>
+            {ret}
+            <GradeOutlined className={classes.iconGray} />
+          </>
+        );
+      }
+    }
+    return ret;
+  }
+
   render() {
     const { product } = this.props;
     return (
@@ -43,15 +80,21 @@ class ProductPreview extends React.Component {
             <Typography variant="h5" gutterBottom className="availability">
               Auf Lager
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.props.onAddToCart}
-            >
-              In den Einkaufswagen
-              <ArrowRight />
-              <ShoppingCart />
-            </Button>
+            <Typography variant="body1" gutterBottom>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.props.onAddToCart}
+              >
+                In den Einkaufswagen
+                <ArrowRight />
+                <ShoppingCart />
+              </Button>
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {this.getReviewRating(this.props, product)} | 1 Bewertung | Jetzt
+              bewerten
+            </Typography>
           </Grid>
         </Grid>
       </div>
@@ -59,4 +102,4 @@ class ProductPreview extends React.Component {
   }
 }
 
-export default ProductPreview;
+export default withStyles(styles)(ProductPreview);
